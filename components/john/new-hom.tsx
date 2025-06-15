@@ -33,7 +33,7 @@ export default function UnderDevelopmentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-600 via-yellow-900 to-yellow-400 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-400 via-yellow-900 to-yellow-400 flex flex-col items-center justify-center p-4">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">Website Under Development</h1>
