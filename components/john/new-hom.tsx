@@ -33,7 +33,7 @@ export default function UnderDevelopmentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-600 via-yellow-900 to-yellow-400 flex flex-col items-center justify-center p-4">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">Website Under Development</h1>
@@ -102,7 +102,7 @@ export default function UnderDevelopmentPage() {
         <div className="flex justify-center mt-6">
           <button
             onClick={handlePlaySequence}
-            className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-200 shadow-lg hover:shadow-xl"
+            className="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-8 rounded-full transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             Play Video Sequence
           </button>
@@ -112,9 +112,9 @@ export default function UnderDevelopmentPage() {
       {/* Footer */}
       <div className="mt-16 text-center">
         <div className="flex items-center justify-center space-x-2 text-gray-400">
-          <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
+          <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></div>
           <span className="text-sm">Coming Soon</span>
-          <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse delay-75"></div>
+          <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse delay-75"></div>
         </div>
       </div>
     </div>
