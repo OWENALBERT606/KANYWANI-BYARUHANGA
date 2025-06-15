@@ -47,7 +47,7 @@ export default function UnderDevelopmentPage() {
         {/* Overlay Image */}
         <div className="absolute top-4 left-4 z-10 bg-white/10 backdrop-blur-sm rounded-lg p-2">
           <Image
-            src="/placeholder.svg?height=120&width=120"
+            src="/john/IMG-20250614-WA0129.jpg"
             alt="Development Logo"
             width={120}
             height={120}
@@ -65,7 +65,7 @@ export default function UnderDevelopmentPage() {
             preload="metadata"
             poster="/placeholder.svg?height=400&width=800"
           >
-            <source src="/placeholder.svg?height=400&width=800" type="video/mp4" />
+            <source src="/john/VID-20250615-WA0002.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
@@ -93,7 +93,7 @@ export default function UnderDevelopmentPage() {
               }
             }}
           >
-            <source src="/placeholder.svg?height=400&width=800" type="video/mp4" />
+            <source src="/john/VID-20250614-WA0003.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
