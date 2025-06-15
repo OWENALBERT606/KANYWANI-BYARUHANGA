@@ -1,0 +1,968 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+// model Account {
+//   id                String  @id @default(cuid())
+//   userId            String
+//   type              String
+//   provider          String
+//   providerAccountId String
+//   refresh_token     String?
+//   access_token      String?
+//   expires_at        Int?
+//   token_type        String?
+//   scope             String?
+//   id_token          String?
+//   session_state     String?
+
+//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@unique([provider, providerAccountId])
+// }
+
+// model Session {
+//   id           String   @id @default(cuid())
+//   sessionToken String   @unique
+//   userId       String
+//   expires      DateTime
+//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+// }
+
+// enum UserRole {
+//   USER
+//   ADMIN
+//   SERVICE_PROVIDER
+// }
+
+// model Role {
+//   id           String       @id @default(cuid())
+//   displayName  String // Human-readable name (e.g., "Store Manager")
+//   roleName     String       @unique // System name (e.g., "store_manager")
+//   organisation Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId        String
+//   description  String?
+//   permissions  String[] // Array of permission strings
+//   users        User[]       @relation("UserRoles")
+//   createdAt    DateTime     @default(now())
+//   updatedAt    DateTime     @updatedAt
+
+//   @@index([roleName])
+// }
+
+// model User {
+//   id            String       @id @default(cuid())
+//   name          String
+//   firstName     String
+//   lastName      String
+//   phone         String       @unique
+//   email         String       @unique
+//   emailVerified DateTime?
+//   image         String?
+//   jobTitle      String?
+//   roles         Role[]       @relation("UserRoles") // Updated to support multiple roles
+//   // role          UserRole  @default(USER)
+//   password      String?
+//   status        Boolean      @default(true)
+//   accounts      Account[]
+//   sessions      Session[]
+//   savings       Saving[]
+//   blogs         Blog[]
+//   orgName       String?
+//   organisation  Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId         String
+//   location      Location?    @relation(fields: [locationId], references: [id])
+//   locationId    String?
+//   locationName  String?
+//   isVerfied     Boolean      @default(false)
+//   token         String?
+//   createdAt     DateTime     @default(now())
+//   updatedAt     DateTime     @updatedAt
+//   roleId        String?
+//   branchId      String?
+//   branch        Branch?      @relation(fields: [branchId], references: [id])
+//   imageUrl      String    @default("https://r50yz3qt7r.ufs.sh/f/zl2zFA2EExZ9Dy9YOVlO4awnFrdohseMm6TzB3HcQkfPpXJl")
+//   occupation    String?
+//   DOB           DateTime?
+//   address       String?
+//   maritalStatus String?
+//   nationality   String?
+//   nextOfKinName String?
+//   nextOfKinPhone  String?
+//   nextOfKinEmail  String?
+//   nextOfKinAddress  String?
+//   nextOfKinRelationship String?
+//   NIN           String @unique
+//   wallet        Wallet?   @relation("UserWallet")
+//    // Management relations
+//   managedBranches BranchManager[] @relation("ManagerUser")         // Branches this user manages
+//   assignedManagers BranchManager[] @relation("ManagerAssignedBy")  // Assignments this user has made (if superadmin)
+
+//   loans         Loan[]
+//   withdraws     Withdraw[] 
+//   loanApplications LoanApplication[]
+//   // One-to-one relationships for Teller and Agent
+//   teller        Teller?
+//   agent         Agent?
+//   role          UserRole  @default(USER)
+// }
+
+// model Location {
+//   id           String       @id @default(cuid())
+//   name         String
+//   type         LocationType
+//   address      String?
+//   phone        String?
+//   email        String?
+//   isActive     Boolean      @default(true)
+//   createdAt    DateTime     @default(now())
+//   updatedAt    DateTime     @updatedAt
+//   users        User[]
+//   organisation Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId        String
+//   // inventories   Inventory[]
+//   // incomingTransfers Transfer[] @relation("ToLocation")
+//   // outgoingTransfers Transfer[] @relation("FromLocation")
+//   // purchaseOrders PurchaseOrder[] @relation("DeliveryLocation")
+//   // salesOrders   SalesOrder[]   @relation("SalesLocation")
+// }
+
+// model Category {
+//   id            String       @id @default(cuid())
+//   title         String
+//   slug          String       @unique
+//   imageUrl      String?
+//   description   String?
+//   parentId      String?
+//   organisation  Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId         String
+//   parent        Category?    @relation("SubCategories", fields: [parentId], references: [id])
+//   subCategories Category[]   @relation("SubCategories")
+//   items         Item[]
+//   createdAt     DateTime     @default(now())
+//   updatedAt     DateTime     @updatedAt
+// }
+
+// model Unit {
+//   id           String       @id @default(cuid())
+//   name         String
+//   symbol       String
+//   // symbol    String
+//   items        Item[]
+//   organisation Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId        String
+//   createdAt    DateTime     @default(now())
+//   updatedAt    DateTime     @updatedAt
+// }
+
+// model Brand {
+//   id           String       @id @default(cuid())
+//   name         String
+//   slug         String       @unique
+//   items        Item[]
+//   organisation Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId        String
+//   createdAt    DateTime     @default(now())
+//   updatedAt    DateTime     @updatedAt
+// }
+
+// model TaxRate {
+//   id           String       @id @default(cuid())
+//   name         String
+//   rate         Float
+//   items        Item[]
+//   organisation Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId        String
+//   createdAt    DateTime     @default(now())
+//   updatedAt    DateTime     @updatedAt
+// }
+
+// model Item {
+//   id                String         @id @default(cuid())
+//   name              String
+//   slug              String         @unique
+//   sku               String         @unique
+//   barcode           String?        @unique
+//   description       String?
+//   dimensions        String?
+//   weight            Float?
+//   upc               String? //Twelve digit unique number associated with the bar code (Universal Product Code)
+//   ean               String? //Thirteen digit unique number (International Article Number)
+//   mpn               String? //Manufacturing Part Number unambiguously identifies a part design
+//   isbn              String? //Thirteen digit unique commercial book identifier (International Standard Book Number)
+//   thumbnail         String?        @default("https://14j7oh8kso.ufs.sh/f/HLxTbDBCDLwfAXaapcezIN7vwylkF1PXSCqAuseUG0gx8mhd")
+//   imageUrls         String[]
+//   categoryId        String?
+//   salesCount        Int            @default(0)
+//   salesTotal        Float          @default(0)
+//   category          Category?      @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+//   taxRateId         String?
+//   organisation      Organisation   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId             String
+//   tax               Float?         @default(0) //tax rate
+//   taxRate           TaxRate?       @relation(fields: [taxRateId], references: [id])
+//   brandId           String?
+//   brand             Brand?         @relation(fields: [brandId], references: [id])
+//   unitId            String?
+//   unit              Unit?          @relation(fields: [unitId], references: [id], onDelete: Cascade)
+//   unitOfMeasure     String? //unit name
+//   costPrice         Float          @default(0)
+//   sellingPrice      Float          @default(0)
+//   minStockLevel     Int            @default(0)
+//   maxStockLevel     Int?
+//   isActive          Boolean        @default(true)
+//   isSerialTracked   Boolean        @default(false)
+//   createdAt         DateTime       @default(now())
+//   updatedAt         DateTime       @updatedAt
+//   // inventories   Inventory[]
+//   serialNumbers     SerialNumber[]
+//   suppliers         Supplier[]     @relation("SupplierItems")
+//   supplierRelations ItemSupplier[] // New relation
+//   // purchaseOrderLines PurchaseOrderLine[]
+//   // salesOrderLines SalesOrderLine[]
+//   // transferLines  TransferLine[]
+//   // adjustmentLines AdjustmentLine[]
+// }
+
+// // Serial number tracking
+// model SerialNumber {
+//   id              String       @id @default(cuid())
+//   serialNumber    String       @unique
+//   itemId          String
+//   item            Item         @relation(fields: [itemId], references: [id])
+//   status          SerialStatus @default(IN_STOCK)
+//   locationId      String?
+//   purchaseOrderId String?
+//   salesOrderId    String?
+//   notes           String?
+//   createdAt       DateTime     @default(now())
+//   updatedAt       DateTime     @updatedAt
+// }
+
+// enum SerialStatus {
+//   IN_STOCK
+//   SOLD
+//   RESERVED
+//   DAMAGED
+//   RETURNED
+// }
+
+// model ItemSupplier {
+//   id               String    @id @default(cuid())
+//   itemId           String
+//   item             Item      @relation(fields: [itemId], references: [id])
+//   supplierId       String
+//   supplier         Supplier  @relation(fields: [supplierId], references: [id])
+//   isPreferred      Boolean   @default(false)
+//   supplierSku      String? // Supplier's own SKU for this item
+//   leadTime         Int? // Typical lead time in days
+//   minOrderQty      Int? // Minimum order quantity
+//   unitCost         Decimal // Supplier-specific cost
+//   lastPurchaseDate DateTime?
+//   notes            String?
+
+//   @@unique([itemId, supplierId])
+// }
+
+// enum LocationType {
+//   WAREHOUSE
+//   SHOP
+//   VIRTUAL
+// }
+
+// model Supplier {
+//   id                String         @id @default(cuid())
+//   name              String
+//   contactPerson     String?
+//   email             String?
+//   phone             String?
+//   address           String?
+//   taxId             String?
+//   paymentTerms      Int? // Days
+//   notes             String?
+//   isActive          Boolean        @default(true)
+//   createdAt         DateTime       @default(now())
+//   organisation      Organisation   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId             String
+//   updatedAt         DateTime       @updatedAt
+//   items             Item[]         @relation("SupplierItems")
+//   supplierRelations ItemSupplier[] // New relation
+//   // purchaseOrders PurchaseOrder[]
+// }
+
+// model Organisation {
+//   id                 String     @id @default(cuid())
+//   name               String
+//   slug               String     @unique
+//   industry           String?
+//   country            String?
+//   state              String?
+//   address            String?
+//   currency           String?
+//   timezone           String?
+//   inventoryStartDate DateTime?
+//   fiscalYear         String?
+//   users              User[]
+//   units              Unit[]
+//   taxes              TaxRate[]
+//   categories         Category[]
+//   invites            Invite[]
+//   items              Item[]
+//   locations          Location[]
+//   brands             Brand[]
+//   suppliers          Supplier[]
+
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   Role      Role[]
+//   apiKeys   ApiKey[]
+
+//   @@map("organisations") // Maps to "organisations" table in the database [^1]
+// }
+
+// model ApiKey {
+//   id        String       @id @default(cuid())
+//   orgId     String
+//   key       String       @unique
+//   name      String
+//   createdAt DateTime     @default(now())
+//   org       Organisation @relation(fields: [orgId], references: [id])
+// }
+
+// model Invite {
+//   id           String       @id @default(cuid())
+//   email        String       @unique
+//   organisation Organisation @relation(fields: [orgId], references: [id], onDelete: Cascade)
+//   orgId        String
+//   status       Boolean      @default(false)
+//   createdAt    DateTime     @default(now())
+//   updatedAt    DateTime     @updatedAt
+
+//   @@map("invites")
+// }
+
+// model Blog {
+//   id            String       @id @default(cuid())
+//   title         String
+//   slug          String       @unique
+//   description   String?      @db.Text // Meta description for SEO
+//   thumbnail     String?
+//   content       String?      @db.Text
+//   published     Boolean?     @default(false)
+//   featured      Boolean?     @default(false)
+//   author        User         @relation(fields: [authorId], references: [id])
+//   authorId      String
+//   authorName    String
+//   authorImage   String?
+//   authorTitle   String?
+//   category      BlogCategory @relation(fields: [categoryId], references: [id])
+//   categoryId    String
+//   categoryTitle String
+//   readingTime   Int? // Estimated reading time in minutes
+//   createdAt     DateTime     @default(now())
+//   updatedAt     DateTime     @updatedAt
+// }
+
+// model BlogCategory {
+//   id        String   @id @default(cuid())
+//   name      String   @unique
+//   slug      String   @unique
+//   blogs     Blog[]
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
+
+
+// model Branch {
+//   id          String   @id @default(uuid())
+//   name        String
+//   slug        String   @unique
+//   location    String
+//   phoneNumber String
+//   wallet      BranchWallet? @relation("BranchToWallet")
+//   email       String
+//    managers      BranchManager[]  // List of assigned managers
+//   tellers     Teller[]
+//   agents      Agent[]
+//   users       User[]
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @updatedAt
+// }
+// model BranchManager {
+//   id           String   @id @default(uuid())
+//   branchId     String
+//   userId       String
+//   assignedById String // Super admin user who assigned the manager
+//   roleTitle    String  @default("Manager") // e.g., Manager, Supervisor, etc.
+//   assignedAt   DateTime @default(now())
+//   isActive     Boolean  @default(true)
+//   notes        String?
+
+//   branch       Branch   @relation(fields: [branchId], references: [id])
+//   user         User     @relation("ManagerUser", fields: [userId], references: [id])
+//   assignedBy   User     @relation("ManagerAssignedBy", fields: [assignedById], references: [id])
+// }
+
+
+// model BranchWallet {
+//   id          String   @id @default(uuid())
+//   balance     Float    @default(0.0)
+//   branchId  String   @unique
+//   branch    Branch   @relation("BranchToWallet", fields: [branchId], references: [id])
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @updatedAt
+// }
+
+// model Wallet {
+//   id             String        @id @default(uuid())
+//   accountNumber  String        @unique
+//   balance        Float         @default(20000)
+//   userId         String        @unique
+//   user           User          @relation("UserWallet", fields: [userId], references: [id])
+//   status         AccountStatus @default(ACTIVE)
+//   interestRate   Float         @default(12)
+//   createdAt      DateTime      @default(now())
+//   updatedAt      DateTime      @updatedAt
+// }
+
+// model Teller {
+//   id            String    @id @default(uuid())
+//   userId        String    @unique
+//   user          User      @relation(fields: [userId], references: [id])
+//   employeeId    String?   @unique
+//   branch        Branch?   @relation(fields: [branchId], references: [id])
+//   branchId      String?
+//   tellerWallet  TellerWallet?
+//   isVerified    Boolean   @default(false)
+//   totalDeposits Float   @default(0)
+//   totalWithdraw Float    @default(0)
+//   totalCashHandled Float   @default(0)
+//   createdAt     DateTime  @default(now())
+//   updatedAt     DateTime  @updatedAt
+// }
+// model TellerWallet {
+//   id             String        @id @default(uuid())
+//   tellerId       String        @unique
+//   teller         Teller        @relation(fields: [tellerId], references: [id])
+//   accountNumber  String        @unique
+//   balance        Float         @default(0)
+//   status         AccountStatus @default(ACTIVE)
+//   dailyCashLimit Float        @default(0)
+//   currentDailyCash Float       @default(0)
+//   createdAt      DateTime      @default(now())
+//   updatedAt      DateTime      @updatedAt
+// }
+
+// model Agent {
+//   id            String    @id @default(uuid())
+//   userId        String    @unique
+//   user          User      @relation(fields: [userId], references: [id])
+//   agentCode     String?   @unique
+//   branch        Branch?   @relation(fields: [branchId], references: [id])
+//   branchId      String?
+//   agentWallet   AgentWallet?
+//   activationDate DateTime?
+//   isVerified    Boolean   @default(false)
+//   verifiedAt    DateTime?
+//   totalWithdraw Int    @default(0)
+//   totalDeposits Float   @default(0)
+//   createdAt     DateTime  @default(now())
+//   updatedAt     DateTime  @updatedAt
+// }
+
+
+// model AgentWallet {
+//   id             String        @id @default(uuid())
+//   agentId        String        @unique
+//   agent          Agent         @relation(fields: [agentId], references: [id])
+//   accountNumber  String        @unique
+//   balance        Float         @default(0)
+//   status         AccountStatus @default(ACTIVE)
+//   dailyCashLimit Float        @default(0)
+//   currentDailyCash Float       @default(0)
+//   createdAt      DateTime      @default(now())
+//   updatedAt      DateTime      @updatedAt
+// }
+
+// model Rate {
+//   id             String        @id @default(uuid())
+//   period         String
+//   percentage     Float
+//   loans          Loan[]
+//   createdAt      DateTime      @default(now())
+//   updatedAt      DateTime      @updatedAt
+// }
+
+// model Loan {
+//   id               String     @id @default(uuid())
+//   userId           String
+//   amount           Float?
+//   rateId           String
+//   rate             Rate       @relation(fields: [rateId], references: [id])
+//   applicationDate  DateTime   @default(now())
+//   status           LoanStatus @default(PENDING)
+//   duration         String? 
+//   approvedById     String?
+//   totalPaid        Float @default(0)
+//   totalRepayable   Float? 
+//   createdAt        DateTime   @default(now())
+//   updatedAt        DateTime   @updatedAt
+//   user             User       @relation(fields: [userId], references: [id])
+//   repayments       LoanRepayment[]
+// }
+
+// model LoanRepayment {
+//   id               String        @id @default(uuid())
+//   loanId           String
+//   amount           Float
+//   paymentDate      DateTime      @default(now())
+//   paymentMethod    PaymentMethod @default(CASH_DEPOSIT)
+//   tellerId         String?
+//   remainingBalance Float
+//   createdAt        DateTime      @default(now())
+//   updatedAt        DateTime      @updatedAt
+//   transactionId    String?       @unique
+//   loan             Loan          @relation(fields: [loanId], references: [id])
+// }
+
+// model Saving {
+//   id              String       @id @default(uuid())
+//   userId          String
+//   amount          Float
+//   depositDate     DateTime     @default(now())
+//   savingType      SavingType   @default(REGULAR)
+//   createdAt       DateTime     @default(now())
+//   updatedAt       DateTime     @updatedAt
+//   user            User         @relation(fields: [userId], references: [id])
+// }
+
+// model Withdraw {
+//   id             String       @id @default(uuid())
+//   userId         String
+//   amount         Float
+//   withdrawDate   DateTime     @default(now())
+//   withdrawType   WithdrawType @default(AGENT_WITHDRAW)
+//   createdAt      DateTime     @default(now())
+//   updatedAt      DateTime     @updatedAt
+//   user           User         @relation(fields: [userId], references: [id])
+// }
+
+// model AuditLog {
+//   id             String   @id @default(uuid())
+//   userId         String
+//   action         String
+//   entityAffected String
+//   oldValue       String?
+//   newValue       String?
+//   ipAddress      String?
+//   createdAt      DateTime @default(now())
+//   systemNotes    String?
+// }
+
+// model LoanApplication {
+//   id                 String     @id @default(uuid())
+//   userId             String
+//   user               User       @relation(fields: [userId], references: [id])
+//   documentUrl        String
+//   uploadDate         DateTime   @default(now())
+//   status             LoanStatus @default(PENDING)
+//   verificationStatus Boolean    @default(false)
+//   verifiedAt         DateTime?
+// }
+
+
+// enum UserStatus {
+//   ACTIVE
+//   INACTIVE
+//   SUSPENDED
+// }
+
+// enum AccountType {
+//   SAVINGS
+//   LOAN
+//   FIXED_DEPOSIT
+//   CURRENT
+// }
+
+// enum WithdrawType {
+//   MOBILE_MONEY
+//   AGENT_WITHDRAW
+//   TELLER_WITHDRAW
+// }
+
+// enum AccountStatus {
+//   ACTIVE
+//   DORMANT
+//   CLOSED
+//   SUSPENDED
+// }
+
+// enum TransactionType {
+//   DEPOSIT
+//   WITHDRAWAL
+//   TRANSFER
+//   LOAN_REPAYMENT
+//   LOAN_DISBURSEMENT
+//   INTEREST_CREDIT
+//   FEE_DEDUCTION
+// }
+
+// enum TransactionStatus {
+//   PENDING
+//   COMPLETED
+//   FAILED
+//   REVERSED
+// }
+
+// enum TransactionMethod {
+//   CASH
+//   MOBILE_MONEY
+//   BANK_TRANSFER
+//   CHEQUE
+// }
+
+// enum LoanStatus {
+//   PENDING
+//   APPROVED
+//   REJECTED
+//   ACTIVE
+//   COMPLETED
+//   DEFAULTED
+//   OVERDUE
+// }
+
+// enum SavingType {
+//   REGULAR
+//   FIXED_DEPOSIT
+//   GOAL_BASED
+//   VACATION
+//   EDUCATION
+//   RETIREMENT
+//   EMERGENCY
+// }
+
+// enum PaymentMethod {
+//   MOBILE_MONEY
+//   CASH_DEPOSIT
+// }
+
+// enum SavingStatus {
+//   ACTIVE
+//   MATURED
+//   WITHDRAWN
+// }
+
+
+// enum NotificationType {
+//   ALERT
+//   WARNING
+//   SUCCESS
+//   INFO
+// }
+
+
+
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum UserRole {
+  USER
+  ADMIN
+  SERVICE_PROVIDER
+}
+
+model Role {
+  id          String   @id @default(cuid())
+  displayName String // Human-readable name (e.g., "Store Manager")
+  roleName    String   @unique // System name (e.g., "store_manager")
+  description String?
+  permissions String[] // Array of permission strings
+  users       User[]   @relation("UserRoles")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([roleName])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  firstName     String
+  lastName      String
+  phone         String    @unique
+  email         String    @unique
+  emailVerified DateTime?
+  starredQuestions QuestionView[]
+  image         String?
+  jobTitle      String?
+  bio           String?
+  questions     Question[]
+  topics         Topic[]
+  responses     Response[]
+  votes      Vote[]
+  answers       Answer[]
+  articles     Article[]
+  comments     Comment[]
+  discussions    Discussion[]
+  roles         Role[]    @relation("UserRoles") // Updated to support multiple roles
+  // role          UserRole  @default(USER)
+  password      String?
+  status        Boolean   @default(true)
+  accounts      Account[]
+  categories    Category[]
+  preferences   Preference[]
+  sessions      Session[]
+  blogs         Blog[]
+  isVerfied     Boolean   @default(false)
+  token         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  roleId        String?
+}
+
+model Category {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  imageUrl    String?
+  questions   Question[]
+  discussions Discussion[]
+  preferences   Preference[]
+  users        User[]
+  articles     Article[]
+  subcategories SubCategory[]
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+}
+model SubCategory {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  imageUrl    String?
+  questions   Question[]
+  discussions Discussion[]
+  articles     Article[]
+  preferences   Preference[]
+  // users        User[]
+  description String?
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+}
+model Preference {
+  id          String    @id @default(cuid())
+  title       String
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String 
+  category   Category   @relation(fields: [categoryId], references: [id])
+  categoryId     String 
+  subcategory   SubCategory   @relation(fields: [subcategoryId], references: [id])
+  subcategoryId     String  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+}
+
+model Blog {
+  id            String       @id @default(cuid())
+  title         String
+  slug          String       @unique
+  description   String?      @db.Text // Meta description for SEO
+  thumbnail     String?
+  content       String?      @db.Text
+  published     Boolean?     @default(false)
+  featured      Boolean?     @default(false)
+  author        User         @relation(fields: [authorId], references: [id])
+  authorId      String
+  authorName    String
+  authorImage   String?
+  authorTitle   String?
+  category      BlogCategory @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  categoryTitle String
+  readingTime   Int? // Estimated reading time in minutes
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model BlogCategory {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  blogs     Blog[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Question {  
+  id         String       @id @default(cuid())
+  title      String
+  content    String
+  // views      Int @default(0)
+  views     QuestionView[]
+  user       User      @relation(fields: [userId], references: [id],onDelete: Cascade)
+  userId     String 
+  category   Category @relation(fields: [categoryId], references: [id],onDelete: Cascade)
+  categoryId    String
+  subcategory   SubCategory @relation(fields: [subcategoryId], references: [id],onDelete:  Cascade)
+  subcategoryId    String
+  answers   Answer[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+}
+model QuestionView {
+  id          String   @id @default(cuid())
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionId  String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  createdAt   DateTime @default(now())
+
+  @@unique([questionId, userId]) // Ensure a user can only star a question once
+}
+model Answer {
+  id            String       @id @default(cuid())
+  content    String
+  question   Question    @relation(fields: [questionId], references: [id])
+  questionId   String 
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String 
+  votes      Vote[]  
+  upVotes    Int @default(0)
+  downVotes  Int @default(0)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+}
+model Vote {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User @relation(fields: [userId], references: [id])
+
+  answer    Answer   @relation(fields: [answerId], references: [id])
+  answerId  String
+  type      VoteType
+  createdAt DateTime @default(now())
+
+  @@unique([userId, answerId]) // ensures one vote per user per answer
+}
+
+enum VoteType {
+  UP
+  DOWN
+}
+
+model Article {
+  id            String       @id @default(cuid())
+  title         String
+  content       String
+  Attachment    String?
+  comments      Comment[]
+  isActive      Boolean @default(false)
+  category   Category @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  subcategory   SubCategory @relation(fields: [subcategoryId], references: [id])
+  subcategoryId    String
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String 
+  likes      Int @default(0)
+  dislikes  Int @default(0)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+}
+model Comment {
+  id            String       @id @default(cuid())
+  content       String
+  user          User      @relation(fields: [userId], references: [id])
+  userId        String 
+  article       Article      @relation(fields: [articleId], references: [id])
+  articleId     String 
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+}
+model Topic {
+  id            String       @id @default(cuid())
+  title         String
+  description   String
+  user          User      @relation(fields: [userId], references: [id])
+  userId        String 
+  discussions   Discussion[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+}
+model Discussion {
+  id            String       @id @default(cuid())
+  title         String
+  content       String
+  attachment   String?
+   subcategory   SubCategory? @relation(fields: [subcategoryId], references: [id])
+  subcategoryId    String?
+  isActive      Boolean @default(true)
+  user          User      @relation(fields: [userId], references: [id])
+  topicId        String 
+  topic          Topic      @relation(fields: [topicId], references: [id])
+  category       Category?      @relation(fields: [categoryId], references: [id])
+  userId          String
+  categoryId        String?
+  views         Int @default(0) 
+  likes         Int @default(0) 
+  dislikes       Int @default(0) 
+  responses      Response[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+}
+model Response {
+  id            String       @id @default(cuid())
+  content       String
+  user          User      @relation(fields: [userId], references: [id])
+  userId        String
+  discussion     Discussion      @relation(fields: [discussionId], references: [id])
+  discussionId    String
+  likes           Int @default(0)
+  dislikes        Int @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
+}
