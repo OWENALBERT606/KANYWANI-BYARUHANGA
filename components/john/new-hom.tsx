@@ -65,7 +65,7 @@ export default function UnderDevelopmentPage() {
             preload="metadata"
             poster="/placeholder.svg?height=400&width=800"
           >
-            <source src="/john/VID-20250615-WA0002.mp4" type="video/mp4" />
+            <source src="/john/KB.mkv" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
 
@@ -93,7 +93,7 @@ export default function UnderDevelopmentPage() {
               }
             }}
           >
-            <source src="/john/VID-20250614-WA0003.mp4" type="video/mp4" />
+            <source src="/john/KB.mkv" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
