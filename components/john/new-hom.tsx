@@ -45,7 +45,7 @@ export default function UnderDevelopmentPage() {
       {/* Video Component with Overlay Image */}
       <div className="relative w-full max-w-4xl mx-auto">
         {/* Overlay Image */}
-        <div className="absolute top-4 left-4 z-10 bg-white/10 backdrop-blur-sm rounded-lg p-2">
+        {/* <div className="absolute top-4 left-4 z-10 bg-white/10 backdrop-blur-sm rounded-lg p-2">
           <Image
             src="/john/IMG-20250614-WA0129.jpg"
             alt="Development Logo"
@@ -53,7 +53,7 @@ export default function UnderDevelopmentPage() {
             height={120}
             className="rounded-lg shadow-lg"
           />
-        </div>
+        </div> */}
 
         {/* Video Container */}
         <div className="relative bg-black rounded-xl overflow-hidden shadow-2xl">
