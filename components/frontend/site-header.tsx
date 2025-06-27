@@ -38,71 +38,6 @@ import { Session } from "next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { getInitials } from "@/lib/generateInitials";
 
-const features = [
-  {
-    icon: Users,
-    title: "Advanced Authentication",
-    description:
-      "Secure and flexible authentication system with role-based access control and multi-provider support.",
-    href: "/features/authentication",
-  },
-  {
-    icon: Layout,
-    title: "Dynamic Dashboard",
-    description:
-      "Beautifully designed, responsive dashboard with data visualization and management tools.",
-    href: "/features/dashboard",
-  },
-  {
-    icon: FileText,
-    title: "Reusable Form Components",
-    description:
-      "Streamline your workflows with reusable and customizable form components.",
-    href: "/features/forms",
-  },
-  {
-    icon: BarChart2,
-    title: "Advanced Data Tables",
-    description:
-      "Manage and display data effortlessly with customizable and powerful data tables.",
-    href: "/features/data-tables",
-  },
-  {
-    icon: CloudUpload,
-    title: "Image Upload",
-    description:
-      "Effortless image uploads powered by UploadThing, supporting both single and multiple file uploads.",
-    href: "/features/image-upload",
-  },
-  {
-    icon: Edit3,
-    title: "Rich Text Editor",
-    description:
-      "Seamlessly create and edit rich content using an integrated Quill editor.",
-    href: "/features/rich-text-editor",
-  },
-  {
-    icon: Lock,
-    title: "Secure Authentication",
-    description:
-      "Role-based authentication system with customizable access control.",
-    href: "/features/secure-authentication",
-  },
-  {
-    icon: Database,
-    title: "Prisma ORM",
-    description:
-      "Leverage Prisma ORM for robust and scalable database management in TypeScript.",
-    href: "/features/prisma-orm",
-  },
-  {
-    icon: BarChart,
-    title: "Analytics Integration",
-    description:
-      "Track performance with integrated analytics from PostHog and Vercel for actionable insights.",
-    href: "/features/analytics",
-  },
-];
 
 export default function SiteHeader({ session }: { session: Session | null }) {
   const [open, setOpen] = React.useState(false);
@@ -117,88 +52,51 @@ export default function SiteHeader({ session }: { session: Session | null }) {
             <NavigationMenuList>
               <NavigationMenuItem>
                 <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                     Home
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Features</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="w-[800px] p-4">
-                    <div className="flex items-center justify-between mb-4 pb-2 border-b">
-                      <h4 className="text-lg font-medium">Features</h4>
-                      <Link
-                        href="/features"
-                        className="text-sm text-blue-500 hover:underline"
-                      >
-                        View all
-                      </Link>
-                    </div>
-                    <div className="grid gap-4 md:grid-cols-3 ">
-                      {features.map((feature, index) => (
-                        <Link
-                          key={index}
-                          href={`/feature/${feature.title
-                            .toLowerCase()
-                            .replace(/\s+/g, "-")}`}
-                          className="block group"
-                        >
-                          <div className="flex items-start gap-4">
-                            <div className="p-2 bg-muted rounded-md group-hover:bg-muted/80">
-                              <feature.icon className="h-6 w-6 text-blue-500" />
-                            </div>
-                            <div>
-                              <h5 className="font-medium mb-1 group-hover:text-blue-500">
-                                {feature.title}
-                              </h5>
-                              <p className="text-sm text-muted-foreground line-clamp-2">
-                                {feature.description}
-                              </p>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                    <div className="mt-6 pt-4 border-t">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <h4 className="font-medium mb-1">Get started</h4>
-                          <p className="text-sm text-muted-foreground">
-                            Am really excited for all these features out of the
-                            box
-                          </p>
-                        </div>
-                        <Button asChild variant="secondary">
-                          <Link
-                            target="_blank"
-                            href="https://coding-school-typescript.vercel.app/give-away"
-                          >
-                            Get started
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                </NavigationMenuContent>
+                <Link href="/blog" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md  bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    Blog
+                  </NavigationMenuLink>
+                </Link>
               </NavigationMenuItem>
 
+             
               <NavigationMenuItem>
-                <Link href="/#pricing" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                    Pricing
+                <Link href="/about" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md  bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    About
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/how-it-works" legacyBehavior passHref>
-                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
-                    How it Works
+                <Link href="/contacts" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md  bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    Contacts
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link href="/nosigaki" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    N'osigaki
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+               <NavigationMenuItem>
+                <Link href="/mpomurro" legacyBehavior passHref>
+                  <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md  bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                    Mp'omurro
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+
+              
             </NavigationMenuList>
           </NavigationMenu>
         </div>
@@ -222,8 +120,8 @@ export default function SiteHeader({ session }: { session: Session | null }) {
             <Button asChild variant="ghost">
               <Link href={"/login"}>Log in</Link>
             </Button>
-            <Button>
-              <Link href="/register">Signup</Link>
+            <Button className="bg-yellow-300">
+              <Link href="/register">Sign Up</Link>
             </Button>
           </div>
         )}
@@ -241,60 +139,45 @@ export default function SiteHeader({ session }: { session: Session | null }) {
             <div className="flex flex-col py-4">
               <Link
                 href="/"
-                className="px-4 py-2 text-lg font-medium hover:bg-accent"
+                className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
                 onClick={() => setOpen(false)}
               >
                 Home
               </Link>
-              <button
-                className="flex items-center justify-between px-4 py-2 text-lg font-medium hover:bg-accent text-left"
-                onClick={() => setShowFeatures(!showFeatures)}
-              >
-                Features
-                <ChevronDown
-                  className={cn(
-                    "h-5 w-5 transition-transform",
-                    showFeatures && "rotate-180"
-                  )}
-                />
-              </button>
-              {showFeatures && (
-                <div className="px-4 py-2 space-y-4">
-                  {features.map((feature, index) => (
-                    <Link
-                      key={index}
-                      href={`/feature/${feature.title
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")}`}
-                      className="flex items-start gap-4 py-2"
-                      onClick={() => setOpen(false)}
-                    >
-                      <div className="p-2 bg-muted rounded-md">
-                        <feature.icon className="h-6 w-6 text-blue-500" />
-                      </div>
-                      <div>
-                        <h5 className="font-medium mb-1">{feature.title}</h5>
-                        <p className="text-sm text-muted-foreground">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
               <Link
-                href="/#pricing"
-                className="px-4 py-2 text-lg font-medium hover:bg-accent"
+                href="/blog"
+                className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
                 onClick={() => setOpen(false)}
               >
-                Pricing
+                Blog
               </Link>
               <Link
-                href="/how-it-works"
-                className="px-4 py-2 text-lg font-medium hover:bg-accent"
+                href="/about"
+                className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
                 onClick={() => setOpen(false)}
               >
-                How it works
+                About
+              </Link>
+              <Link
+                href="/contacts"
+                className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
+                onClick={() => setOpen(false)}
+              >
+                Contacts
+              </Link>
+              <Link
+                href="/nosigaki"
+                className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
+                onClick={() => setOpen(false)}
+              >
+                N'osigaki
+              </Link>
+              <Link
+                href="/mpomurro"
+                className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
+                onClick={() => setOpen(false)}
+              >
+                Mp'omurro
               </Link>
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-background">
@@ -306,7 +189,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
                 >
                   Log in
                 </Button>
-                <Button className="w-full" onClick={() => setOpen(false)}>
+                <Button className="w-full bg-yellow-400" onClick={() => setOpen(false)}>
                   Sign up
                 </Button>
               </div>

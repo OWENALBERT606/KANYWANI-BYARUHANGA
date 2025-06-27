@@ -13,7 +13,7 @@ export default async function HomeLayout({
   return (
     <div className="bg-white">
       {/* <PromoBanner /> */}
-      {/* <SiteHeader session={session} /> */}
+      <SiteHeader session={session} />
       {children}
       {/* <Footer /> */}
     </div>
