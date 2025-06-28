@@ -118,10 +118,10 @@ export default function SiteHeader({ session }: { session: Session | null }) {
         ) : (
           <div className="hidden md:flex items-center space-x-4">
             <Button asChild variant="ghost">
-              <Link href={"/login"}>Log in</Link>
+              <Link href={"/"}>Log in</Link>
             </Button>
             <Button className="bg-yellow-300">
-              <Link href="/register">Sign Up</Link>
+              <Link href="/">Sign Up</Link>
             </Button>
           </div>
         )}
