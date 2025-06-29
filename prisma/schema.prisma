@@ -924,8 +924,9 @@ model Comment {
   updatedAt     DateTime? @updatedAt
 }
 model VisitCount {
-  id     Int    @id @default(1)
-  count  Int    @default(0)
+  id    String   @id @default(cuid())
+  count Int      @default(0)
+  createdAt DateTime @default(now())
 }
 model Topic {
   id            String       @id @default(cuid())
