@@ -4,19 +4,34 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const carouselItems = [
   {
-    image: "/images/slide-1.jpg",
-    title: "Simple Monthly Savings,",
-    subtitle: "Join Ronix Savings Group",
+    image: "/video-clips/SLIDE (1).jpg",
+    title: " LET'S CUT THE NOISE AND DEVELOP OUR NATION",
+    subtitle: "TUTATOKOOLIKANA TWOMBEKE 'IHANGA LYAITU",
+    default: "Join the Campaign",
   },
   {
-    image: "/images/slide-2.jpg",
-    title: "Healthy Habits,",
-    subtitle: "Financial & Physical Wellness",
+    image: "/video-clips/SLIDE (2).jpg",
+   title: " LET'S CUT THE NOISE AND DEVELOP OUR NATION",
+    subtitle: "TUTATOKOOLIKANA TWOMBEKE 'IHANGA LYAITU",
+    default: "oin the Campaign",
   },
   {
-    image: "/images/slide-3.jpg",
-    title: "End Year Celebration,",
-    subtitle: "Reap Your Rewards in December",
+    image: "/video-clips/SLIDE (3).JPG",
+    title: " LET'S CUT THE NOISE AND DEVELOP OUR NATION",
+    subtitle: "TUTATOKOOLIKANA TWOMBEKE 'IHANGA LYAITU",
+    default: "Join the Campaign",
+  },
+  {
+    image: "/video-clips/SLIDE (4).JPG",
+   title: " LET'S CUT THE NOISE AND DEVELOP OUR NATION",
+    subtitle: "TUTATOKOOLIKANA TWOMBEKE 'IHANGA LYAITU",
+    default: "Join the Campaign",
+  },
+  {
+    image: "/video-clips/SLIDE (5).JPG",
+    title: " LET'S CUT THE NOISE AND DEVELOP OUR NATION",
+    subtitle: "TUTATOKOOLIKANA TWOMBEKE 'IHANGA LYAITU",
+    default: "Join the Campaign",
   },
 ];
 
@@ -39,7 +54,7 @@ export default function CustomCarousel() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-purple-900 overflow-hidden">
+    <div className="relative w-full h-screen bg-yellow-400 overflow-hidden">
       <div className="absolute inset-0">
         {carouselItems.map((item, index) => (
           <div
@@ -53,7 +68,7 @@ export default function CustomCarousel() {
               alt={`Slide ${index + 1}`}
               className="object-cover w-full h-full"
             />
-            <div className="absolute inset-0 bg-purple-900/50" />
+            <div className="absolute inset-0 bg-yellow-400/30" />
           </div>
         ))}
       </div>
@@ -62,6 +77,7 @@ export default function CustomCarousel() {
           {carouselItems[currentSlide].title}
         </h2>
         <p className="text-xl mb-8">{carouselItems[currentSlide].subtitle}</p>
+        <p className="text-sm mb-8">{carouselItems[currentSlide].default}</p>
         <div className="flex space-x-2 mb-4">
           {carouselItems.map((_, index) => (
             <button

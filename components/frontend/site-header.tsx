@@ -96,7 +96,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/mpomurro" legacyBehavior passHref>
+                <Link href="/hoimacitywest" legacyBehavior passHref>
                   <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md  bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                     Hoima City (West)
                   </NavigationMenuLink>
@@ -126,7 +126,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
         ) : (
           <div className="hidden md:flex items-center space-x-4">
             <Button asChild variant="ghost">
-              <Link href={"/"}>Log in</Link>
+              <Link href={"/login"}>Log in</Link>
             </Button>
             <Button className="bg-yellow-300">
               <Link href="/">Sign Up</Link>
@@ -186,6 +186,13 @@ export default function SiteHeader({ session }: { session: Session | null }) {
                 onClick={() => setOpen(false)}
               >
                 Mp'omurro
+              </Link>
+               <Link
+                href="/mpomurro"
+                className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
+                onClick={() => setOpen(false)}
+              >
+                Hoima City (west)
               </Link>
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-background">
