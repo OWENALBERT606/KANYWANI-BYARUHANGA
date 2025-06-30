@@ -8,6 +8,7 @@ import {
   CircleDollarSign,
   FolderTree,
   Home,
+  Image,
   LucideIcon,
   Presentation,
   Settings,
@@ -66,44 +67,44 @@ export const sidebarLinks: ISidebarLink[] = [
       },
     ],
   },
-  {
-    title: "Inventory",
-    icon: BaggageClaim,
-    dropdown: true,
-    href: "/dashboard/inventory/products",
-    permission: "products.read",
-    dropdownMenu: [
-      {
-        title: "Categories",
-        href: "/dashboard/inventory/categories",
-        permission: "categories.read",
-      },
-      {
-        title: "Products",
-        href: "/dashboard/inventory/products",
-        permission: "products.read",
-      },
-    ],
-  },
-  {
-    title: "Sales",
-    icon: CircleDollarSign,
-    dropdown: true,
-    href: "/dashboard/sales",
-    permission: "sales.read",
-    dropdownMenu: [
-      {
-        title: "Sales",
-        href: "/dashboard/sales",
-        permission: "sales.read",
-      },
-      {
-        title: "Customers",
-        href: "/dashboard/sales/customers",
-        permission: "customers.read",
-      },
-    ],
-  },
+  // {
+  //   title: "Inventory",
+  //   icon: BaggageClaim,
+  //   dropdown: true,
+  //   href: "/dashboard/inventory/products",
+  //   permission: "products.read",
+  //   dropdownMenu: [
+  //     {
+  //       title: "Categories",
+  //       href: "/dashboard/inventory/categories",
+  //       permission: "categories.read",
+  //     },
+  //     {
+  //       title: "Products",
+  //       href: "/dashboard/inventory/products",
+  //       permission: "products.read",
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Sales",
+  //   icon: CircleDollarSign,
+  //   dropdown: true,
+  //   href: "/dashboard/sales",
+  //   permission: "sales.read",
+  //   dropdownMenu: [
+  //     {
+  //       title: "Sales",
+  //       href: "/dashboard/sales",
+  //       permission: "sales.read",
+  //     },
+  //     {
+  //       title: "Customers",
+  //       href: "/dashboard/sales/customers",
+  //       permission: "customers.read",
+  //     },
+  //   ],
+  // },
   {
     title: "Blogs",
     icon: Book,
@@ -112,11 +113,25 @@ export const sidebarLinks: ISidebarLink[] = [
     permission: "blogs.read",
   },
   {
-    title: "Orders",
-    href: "/dashboard/orders",
+    title: "N'osigaki",
+    icon: Book,
+    dropdown: false,
+    href: "/dashboard/nosigaki",
+    permission: "nosigaki.read",
+  },
+  {
+    title: "Mp'omurro",
+    href: "/dashboard/mpomurro",
     icon: BarChart2,
     dropdown: false,
-    permission: "orders.read",
+    permission: "mpomurro.read",
+  },
+  {
+    title: "Banners",
+    href: "/dashboard/banners",
+    icon: Image,
+    dropdown: false,
+    permission: "banners.read",
   },
   {
     title: "Settings",
@@ -125,28 +140,28 @@ export const sidebarLinks: ISidebarLink[] = [
     dropdown: false,
     permission: "settings.read",
   },
-  {
-    title: "Reports",
-    icon: BarChart4,
-    dropdown: true,
-    href: "/dashboard/reports/products",
-    permission: "reports.read",
-    dropdownMenu: [
-      {
-        title: "Product Report",
-        href: "/dashboard/reports/products",
-        permission: "reports.read",
-      },
-      {
-        title: "Inventory Report",
-        href: "/dashboard/reports/inventory",
-        permission: "reports.read",
-      },
-      {
-        title: "Customers Report",
-        href: "/dashboard/reports/customers",
-        permission: "reports.read",
-      },
-    ],
-  },
+  // {
+  //   title: "Reports",
+  //   icon: BarChart4,
+  //   dropdown: true,
+  //   href: "/dashboard/reports/products",
+  //   permission: "reports.read",
+  //   dropdownMenu: [
+  //     {
+  //       title: "Product Report",
+  //       href: "/dashboard/reports/products",
+  //       permission: "reports.read",
+  //     },
+  //     {
+  //       title: "Inventory Report",
+  //       href: "/dashboard/reports/inventory",
+  //       permission: "reports.read",
+  //     },
+  //     {
+  //       title: "Customers Report",
+  //       href: "/dashboard/reports/customers",
+  //       permission: "reports.read",
+  //     },
+  //   ],
+  // },
 ];

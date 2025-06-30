@@ -75,13 +75,23 @@ export const permissions: ModulePermissions[] = [
     },
   },
   {
-    display: "Reports",
-    name: "reports",
+    display: "Banners",
+    name: "banners",
     permissions: {
-      create: "reports.create",
-      read: "reports.read",
-      update: "reports.update",
-      delete: "reports.delete",
+      create: "banners.create",
+      read: "banners.read",
+      update: "banners.update",
+      delete: "banners.delete",
+    },
+  },
+  {
+    display: "Mp'omurro",
+    name: "mpomurro",
+    permissions: {
+      create: "mpomurro.create",
+      read: "mpomurro.read",
+      update: "mpomurro.update",
+      delete: "mpomurro.delete",
     },
   },
   {
@@ -105,13 +115,13 @@ export const permissions: ModulePermissions[] = [
     },
   },
   {
-    display: "Products",
-    name: "products",
+    display: "N'osigaki",
+    name: "nosigaki",
     permissions: {
-      create: "products.create",
-      read: "products.read",
-      update: "products.update",
-      delete: "products.delete",
+      create: "nosigaki.create",
+      read: "nosigaki.read",
+      update: "nosigaki.update",
+      delete: "nosigaki.delete",
     },
   },
   {
