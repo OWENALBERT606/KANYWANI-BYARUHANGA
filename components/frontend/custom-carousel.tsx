@@ -13,7 +13,7 @@ const carouselItems = [
     image: "/video-clips/SLIDE (2).jpg",
    title: " LET'S CUT THE NOISE AND DEVELOP OUR NATION",
     subtitle: "TUTATOKOOLIKANA TWOMBEKE 'IHANGA LYAITU",
-    default: "oin the Campaign",
+    default: "Join the Campaign",
   },
   {
     image: "/video-clips/SLIDE (3).JPG",
