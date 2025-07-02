@@ -473,7 +473,7 @@ export default function UnderDevelopmentPage() {
 
       {/* Visit Counter */}
       {isClient && (
-        <div className="absolute  md:top-24 right-4 bg-white/10 backdrop-blur-sm rounded-lg p-3 text-white">
+        <div className="absolute top-16 md:top-24 right-4 bg-white/10 backdrop-blur-sm rounded-lg p-3 text-white">
           <div className="flex items-center space-x-2">
             <Users size={20} />
             <span className="font-semibold">
@@ -487,7 +487,7 @@ export default function UnderDevelopmentPage() {
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">Website Under Development</h1>
         <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-          Bridging to a brighter  future through Intercultural & Intergenerational Harmony
+          Bridging to a brighter  future through Intercultural & Intergenerational Harmony
         </p>
       </div>
 
