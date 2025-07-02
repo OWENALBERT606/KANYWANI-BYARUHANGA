@@ -46,11 +46,6 @@ export default function Page() {
           <div className="w-12 h-12 bg-yellow-500 rounded-full opacity-80 animate-pulse delay-75"></div>
           <div className="w-20 h-20 bg-yellow-300 rounded-full opacity-40 animate-pulse delay-150"></div>
         </div>
-
-        {/* Footer */}
-        <footer className="mt-16 text-center">
-          <p className="text-yellow-600 text-sm">© 2024 Nosigaki Video Experience</p>
-        </footer>
       </div>
     </div>
   )
