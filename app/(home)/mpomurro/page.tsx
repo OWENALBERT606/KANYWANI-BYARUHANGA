@@ -34,7 +34,7 @@ export default function Page() {
             <div className="mt-6 text-center">
               <h2 className="text-2xl font-semibold text-yellow-800 mb-2">Featured Video</h2>
               <p className="text-yellow-700 text-lg">
-                Experience the essence of nosigaki through this carefully curated video content.
+                Experience the essence of mp'omurro through this carefully curated video content.
               </p>
             </div>
           </div>
