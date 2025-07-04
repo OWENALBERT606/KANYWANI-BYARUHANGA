@@ -188,7 +188,7 @@ export default function SiteHeader({ session }: { session: Session | null }) {
                 Mp'omurro
               </Link>
                <Link
-                href="/mpomurro"
+                href="/hoimacitywest"
                 className="px-4 py-2 text-lg font-medium hover:bg-yellow-200"
                 onClick={() => setOpen(false)}
               >
