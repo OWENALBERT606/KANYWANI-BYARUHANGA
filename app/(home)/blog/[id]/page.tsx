@@ -13,8 +13,9 @@ interface BlogPostPageProps {
   }
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = mockBlogPosts.find((p) => p.id === params.id)
+export default async function BlogPostPage({params}: {params: Promise<{ id: string }>}):Promise<any> {
+      const {id}=await params;
+  const post = mockBlogPosts.find((p) => p.id === id)
 
   if (!post) {
     notFound()
