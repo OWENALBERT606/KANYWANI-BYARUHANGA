@@ -6,7 +6,7 @@ import { HeroSlider } from '../../components/hero-slider'
 export default function Page() {
   return (
     <div>
-     <div className="px-6"> <HeroSlider/></div>
+     <div className=""> <HeroSlider/></div>
       <UnderDevelopmentPage/>
     </div>
   )
