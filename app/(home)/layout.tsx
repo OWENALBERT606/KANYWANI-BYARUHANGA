@@ -1,3 +1,4 @@
+import { FooterSection } from "@/components/footer-section";
 import PromoBanner from "@/components/frontend/PromoBanner";
 import Footer from "@/components/frontend/site-footer";
 import SiteHeader from "@/components/frontend/site-header";
@@ -15,7 +16,7 @@ export default async function HomeLayout({
       {/* <PromoBanner /> */}
       <SiteHeader session={session}/>
       {children}
-      {/* <Footer /> */}
+      <FooterSection />
     </div>
   );
 }
