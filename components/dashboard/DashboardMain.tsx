@@ -1,169 +1,143 @@
-import { MetricCard } from "@/components/metric-card";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  ArrowDown,
-  ArrowRight,
-  ArrowUp,
-  Box,
-  Download,
-  ShoppingBag,
-  ShoppingCart,
-  Users,
-} from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ArrowRight, BookOpen, Download, Eye, FileText, MessageCircle, PenTool } from "lucide-react"
 
 const metrics = [
   {
-    title: "Total Sales",
-    value: "$120,784.02",
+    title: "Total Site Visits",
+    value: "45,892",
     change: {
-      value: "12.3%",
+      value: "18.2%",
       trend: "up" as const,
-      today: "+$1,453.89 today",
+      today: "+2,341 today",
     },
     color: "bg-blue-500",
   },
   {
-    title: "Total Orders",
-    value: "28,834",
+    title: "Total Users",
+    value: "12,456",
     change: {
-      value: "20.1%",
+      value: "15.3%",
       trend: "up" as const,
-      today: "+2,676 today",
+      today: "+189 today",
+    },
+    color: "bg-green-500",
+  },
+  {
+    title: "Total Comments",
+    value: "8,234",
+    change: {
+      value: "7.8%",
+      trend: "up" as const,
+      today: "+67 today",
     },
     color: "bg-purple-500",
   },
   {
-    title: "Visitor",
-    value: "18,896",
+    title: "Engagement Rate",
+    value: "24.7%",
     change: {
-      value: "5.6%",
-      trend: "down" as const,
-      today: "-876 today",
-    },
-    color: "bg-violet-500",
-  },
-  {
-    title: "Refunded",
-    value: "2,876",
-    change: {
-      value: "13%",
+      value: "3.2%",
       trend: "up" as const,
-      today: "+34 today",
+      today: "+0.8% today",
     },
-    color: "bg-indigo-500",
+    color: "bg-orange-500",
   },
-];
+]
 
 const recentActivity = [
   {
-    customer: "Sarah Johnson",
-    email: "sarah.j@example.com",
-    status: "Completed",
-    amount: "$234.50",
-    date: "5 min ago",
+    reader: "Alexandra Smith",
+    email: "alex.smith@example.com",
+    action: "Commented on",
+    content: "Political Reform Article",
+    time: "5 min ago",
     avatar: "/placeholder.svg?height=40&width=40",
   },
   {
-    customer: "Michael Chen",
-    email: "m.chen@example.com",
-    status: "Pending",
-    amount: "$129.99",
-    date: "10 min ago",
+    reader: "David Johnson",
+    email: "d.johnson@example.com",
+    action: "Liked",
+    content: "Nosigaki: Leadership Insights",
+    time: "12 min ago",
     avatar: "/placeholder.svg?height=40&width=40",
   },
   {
-    customer: "Emma Wilson",
-    email: "emma.w@example.com",
-    status: "Processing",
-    amount: "$549.00",
-    date: "15 min ago",
+    reader: "Maria Garcia",
+    email: "maria.g@example.com",
+    action: "Shared",
+    content: "Mpomurro: Economic Policy",
+    time: "18 min ago",
     avatar: "/placeholder.svg?height=40&width=40",
   },
-];
+]
 
-const topProducts = [
+const topContent = [
   {
-    name: "Wireless Earbuds Pro",
-    sales: 1234,
-    revenue: "$45,678",
-    image: "/placeholder.svg?height=40&width=40",
+    title: "The Future of Digital Governance",
+    type: "Blog Post",
+    views: 12340,
+    comments: 89,
+    image: "/governance-article-thumbnail.png",
   },
   {
-    name: "Smart Watch Elite",
-    sales: 987,
-    revenue: "$39,480",
-    image: "/placeholder.svg?height=40&width=40",
+    title: "Leadership in Crisis",
+    type: "Nosigaki",
+    views: 9876,
+    comments: 67,
+    image: "/leadership-article-thumbnail.png",
   },
   {
-    name: "Premium Laptop Stand",
-    sales: 865,
-    revenue: "$25,950",
-    image: "/placeholder.svg?height=40&width=40",
+    title: "Economic Recovery Strategies",
+    type: "Mpomurro",
+    views: 8543,
+    comments: 54,
+    image: "/economics-article-thumbnail.png",
   },
-];
+]
+
 const bigCards = [
   {
-    title: "Total Sales",
-    value: "$120,784.02",
-    change: "+12.3%",
+    title: "Total Blog Posts",
+    value: "127",
+    change: "+8 this month",
     trend: "up",
-    icon: ShoppingCart,
+    icon: BookOpen,
   },
   {
-    title: "Total Orders",
-    value: "28,834",
-    change: "+20.1%",
+    title: "Total Nosigaki Articles",
+    value: "43",
+    change: "+3 this month",
     trend: "up",
-    icon: ShoppingBag,
+    icon: PenTool,
   },
   {
-    title: "Total Products",
-    value: "1,429",
-    change: "+8.3%",
+    title: "Total Mpomurro Articles",
+    value: "38",
+    change: "+2 this month",
     trend: "up",
-    icon: Box,
+    icon: FileText,
   },
   {
-    title: "Total Users",
-    value: "12,456",
-    change: "+15.2%",
+    title: "Total Site Visits",
+    value: "45,892",
+    change: "+18.2%",
     trend: "up",
-    icon: Users,
+    icon: Eye,
   },
-];
+]
+
 export default function DashboardMain() {
   return (
     <div className="min-h-screen">
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
-            <p className="text-muted-foreground">
-              Here's your statistics overview.
-            </p>
+            <h1 className="text-3xl font-bold tracking-tight">Content Dashboard</h1>
+            <p className="text-muted-foreground">Track your content performance and audience engagement.</p>
           </div>
           <div className="flex items-center space-x-4">
             <Select defaultValue="7d">
@@ -179,7 +153,7 @@ export default function DashboardMain() {
             </Select>
             <Button variant="outline">
               <Download className="mr-2 h-4 w-4" />
-              Export to Excel
+              Export Analytics
             </Button>
           </div>
         </div>
@@ -188,17 +162,13 @@ export default function DashboardMain() {
           {bigCards.map((card, index) => (
             <Card key={index} className="col-span-3 relative overflow-hidden">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  {card.title}
-                </CardTitle>
+                <CardTitle className="text-sm font-medium">{card.title}</CardTitle>
                 <card.icon className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{card.value}</div>
-                <div
-                  className={`flex items-center text-sm ${card.trend === "up" ? "text-green-600" : "text-red-600"}`}
-                >
-                  View details
+                <div className={`flex items-center text-sm ${card.trend === "up" ? "text-green-600" : "text-red-600"}`}>
+                  {card.change}
                   <ArrowRight className="mr-1 h-4 w-4" />
                 </div>
               </CardContent>
@@ -213,16 +183,16 @@ export default function DashboardMain() {
           {/* Recent Activity Table */}
           <Card className="col-span-8">
             <CardHeader>
-              <CardTitle>Recent Activity</CardTitle>
-              <CardDescription>Latest customer transactions</CardDescription>
+              <CardTitle>Recent Reader Activity</CardTitle>
+              <CardDescription>Latest interactions with your content</CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Customer</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Amount</TableHead>
+                    <TableHead>Reader</TableHead>
+                    <TableHead>Action</TableHead>
+                    <TableHead>Content</TableHead>
                     <TableHead className="text-right">Time</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -232,24 +202,17 @@ export default function DashboardMain() {
                       <TableCell>
                         <div className="flex items-center space-x-3">
                           <Avatar>
-                            <AvatarImage
-                              src={activity.avatar}
-                              alt={activity.customer}
-                            />
+                            <AvatarImage src={activity.avatar || "/placeholder.svg"} alt={activity.reader} />
                             <AvatarFallback>
-                              {activity.customer
+                              {activity.reader
                                 .split(" ")
                                 .map((n) => n[0])
                                 .join("")}
                             </AvatarFallback>
                           </Avatar>
                           <div>
-                            <div className="font-medium">
-                              {activity.customer}
-                            </div>
-                            <div className="text-sm text-muted-foreground">
-                              {activity.email}
-                            </div>
+                            <div className="font-medium">{activity.reader}</div>
+                            <div className="text-sm text-muted-foreground">{activity.email}</div>
                           </div>
                         </div>
                       </TableCell>
@@ -257,20 +220,18 @@ export default function DashboardMain() {
                         <div
                           className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium
                           ${
-                            activity.status === "Completed"
-                              ? "bg-green-100 text-green-800"
-                              : activity.status === "Pending"
-                                ? "bg-yellow-100 text-yellow-800"
-                                : "bg-blue-100 text-blue-800"
+                            activity.action === "Commented on"
+                              ? "bg-blue-100 text-blue-800"
+                              : activity.action === "Liked"
+                                ? "bg-green-100 text-green-800"
+                                : "bg-purple-100 text-purple-800"
                           }`}
                         >
-                          {activity.status}
+                          {activity.action}
                         </div>
                       </TableCell>
-                      <TableCell>{activity.amount}</TableCell>
-                      <TableCell className="text-right">
-                        {activity.date}
-                      </TableCell>
+                      <TableCell>{activity.content}</TableCell>
+                      <TableCell className="text-right">{activity.time}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -278,29 +239,32 @@ export default function DashboardMain() {
             </CardContent>
           </Card>
 
-          {/* Top Selling Products */}
+          {/* Top Performing Content */}
           <Card className="col-span-4">
             <CardHeader>
-              <CardTitle>Top Selling Products</CardTitle>
-              <CardDescription>Best performing products</CardDescription>
+              <CardTitle>Top Performing Content</CardTitle>
+              <CardDescription>Most viewed articles and posts</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                {topProducts.map((product, index) => (
+                {topContent.map((content, index) => (
                   <div key={index} className="flex items-center">
                     <Avatar className="h-9 w-9">
-                      <AvatarImage src={product.image} alt={product.name} />
-                      <AvatarFallback>P</AvatarFallback>
+                      <AvatarImage src={content.image || "/placeholder.svg"} alt={content.title} />
+                      <AvatarFallback>
+                        {content.type === "Blog Post" ? "B" : content.type === "Nosigaki" ? "N" : "M"}
+                      </AvatarFallback>
                     </Avatar>
                     <div className="ml-4 space-y-1">
-                      <p className="text-sm font-medium leading-none">
-                        {product.name}
-                      </p>
+                      <p className="text-sm font-medium leading-none">{content.title}</p>
                       <p className="text-sm text-muted-foreground">
-                        {product.sales.toLocaleString()} sales
+                        {content.type} • {content.views.toLocaleString()} views
                       </p>
                     </div>
-                    <div className="ml-auto font-medium">{product.revenue}</div>
+                    <div className="ml-auto text-sm font-medium flex items-center">
+                      <MessageCircle className="h-3 w-3 mr-1" />
+                      {content.comments}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -309,5 +273,5 @@ export default function DashboardMain() {
         </div>
       </div>
     </div>
-  );
+  )
 }

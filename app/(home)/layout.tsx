@@ -16,7 +16,7 @@ export default async function HomeLayout({
       {/* <PromoBanner /> */}
       <SiteHeader session={session}/>
       {children}
-      <FooterSection />
+      {/* <FooterSection /> */}
     </div>
   );
 }

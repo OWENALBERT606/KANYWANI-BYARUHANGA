@@ -45,7 +45,7 @@ export default function BlogPage() {
                     </div>
                   </div>
                   <Link href={`/blog/${featuredPost.id}`}>
-                    <Button className="bg-primary hover:bg-primary/90">Read Full Article</Button>
+                    <Button className="bg-yellow-600 hover:bg-yellow-600/90">Read Full Article</Button>
                   </Link>
                 </CardContent>
               </div>
