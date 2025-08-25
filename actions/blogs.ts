@@ -129,12 +129,9 @@ export async function getDashboardBlogs() {
       orderBy: {
         createdAt: "desc",
       },
-      select: {
-        id: true,
-        title: true,
-        thumbnail: true,
-        published: true,
-        categoryTitle: true,
+      include: {
+        category: true,
+        comments: true,
       },
     });
 

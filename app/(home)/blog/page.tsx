@@ -4,11 +4,13 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { mockBlogPosts } from "@/lib/blog-data"
 import { Clock, User } from "lucide-react"
+import { getBlogs, getDashboardBlogs } from "@/actions/blogs"
 
-export default function BlogPage() {
-  const featuredPost = mockBlogPosts[0]
-  const otherPosts = mockBlogPosts.slice(1)
-
+export default async function BlogPage() {
+  const blogs = (await getDashboardBlogs()) || [];
+  console.log(blogs);
+  const featuredPost = blogs[0]
+  const otherPosts = blogs.slice(1)
   return (
     <div className="min-h-screen px-4 md:px-12 lg:px-24 bg-background">
 
@@ -19,29 +21,25 @@ export default function BlogPage() {
             <div className="md:flex">
               <div className="md:w-1/2">
                 <img
-                  src={featuredPost.imageUrl || "/placeholder.svg"}
+                  src={featuredPost.thumbnail|| "/placeholder.svg"}
                   alt={featuredPost.title}
                   className="w-full h-64 md:h-full object-cover"
                 />
               </div>
               <div className="md:w-1/2 p-6">
                 <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="secondary">{featuredPost.category}</Badge>
+                  <Badge variant="secondary">{featuredPost.category?.name}</Badge>
                   <span className="text-sm text-muted-foreground">Featured</span>
                 </div>
                 <CardHeader className="p-0 mb-4">
                   <CardTitle className="text-2xl md:text-3xl leading-tight">{featuredPost.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-0">
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{featuredPost.excerpt}</p>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{featuredPost.comments.length} responses</p>
                   <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <User className="w-4 h-4" />
-                      {featuredPost.author}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {featuredPost.readTime} min read
+                     Kanywani Byaruhanga
                     </div>
                   </div>
                   <Link href={`/blog/${featuredPost.id}`}>
@@ -59,23 +57,19 @@ export default function BlogPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherPosts.map((post) => (
               <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <img src={post.imageUrl || "/placeholder.svg"} alt={post.title} className="w-full h-48 object-cover" />
+                <img src={post.thumbnail || "/placeholder.svg"} alt={post.title} className="w-full h-48 object-cover" />
                 <CardHeader>
                   <div className="flex items-center gap-2 mb-2">
-                    <Badge variant="outline">{post.category}</Badge>
+                    <Badge variant="outline">{post.category.name}</Badge>
                   </div>
                   <CardTitle className="text-xl leading-tight">{post.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">{post.excerpt}</p>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">{post.comments.length} responses</p>
                   <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
                       <User className="w-4 h-4" />
-                      {post.author}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {post.readTime} min read
+                      Kanywani Byaruhanga
                     </div>
                   </div>
                   <Link href={`/blog/${post.id}`}>
