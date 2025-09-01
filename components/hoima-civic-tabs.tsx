@@ -32,6 +32,8 @@ import {
   Phone,
   Mail,
   MapIcon,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react"
 
 const parishes = [
@@ -44,17 +46,17 @@ const parishes = [
 ]
 
 const villages = [
-  { name: "Bujumbura Central", parish: "Bujumbura", households: 450 },
-  { name: "Kiryatete East", parish: "Kiryatete", households: 320 },
-  { name: "Kiryatete West", parish: "Kiryatete", households: 280 },
-  { name: "Kyabigambire North", parish: "Kyabigambire", households: 380 },
-  { name: "Kyabigambire South", parish: "Kyabigambire", households: 410 },
-  { name: "Mparo Central", parish: "Mparo", households: 290 },
-  { name: "Mparo Hill", parish: "Mparo", households: 220 },
-  { name: "Kigorobya Market", parish: "Kigorobya", households: 520 },
-  { name: "Kigorobya Trading", parish: "Kigorobya", households: 380 },
-  { name: "Buhimba Landing", parish: "Buhimba", households: 250 },
-  { name: "Buhimba Village", parish: "Buhimba", households: 190 },
+  { name: "Bujumbura Central", parish: "Bujumbura Parish", households: 450 },
+  { name: "Kiryatete East", parish: "Kiryatete Parish", households: 320 },
+  { name: "Kiryatete West", parish: "Kiryatete Parish", households: 280 },
+  { name: "Kyabigambire North", parish: "Kyabigambire Parish", households: 380 },
+  { name: "Kyabigambire South", parish: "Kyabigambire Parish", households: 410 },
+  { name: "Mparo Central", parish: "Mparo Parish", households: 290 },
+  { name: "Mparo Hill", parish: "Mparo Parish", households: 220 },
+  { name: "Kigorobya Market", parish: "Kigorobya Parish", households: 520 },
+  { name: "Kigorobya Trading", parish: "Kigorobya Parish", households: 380 },
+  { name: "Buhimba Landing", parish: "Buhimba Parish", households: 250 },
+  { name: "Buhimba Village", parish: "Buhimba Parish", households: 190 },
 ]
 
 const manifestoPromises = [
@@ -173,6 +175,7 @@ const manifestoDetails = {
 
 export function HoimaCivicTabs() {
   const [activeTab, setActiveTab] = useState("parishes")
+  const [expandedParish, setExpandedParish] = useState<string | null>(null)
   const [registrationData, setRegistrationData] = useState({
     fullName: "",
     phone: "",
@@ -196,23 +199,24 @@ export function HoimaCivicTabs() {
     })
   }
 
+  const getVillagesForParish = (parishName: string) => {
+    return villages.filter((village) => village.parish === parishName)
+  }
+
+  const toggleParishExpansion = (parishName: string) => {
+    setExpandedParish(expandedParish === parishName ? null : parishName)
+  }
+
   return (
     <div className="w-full max-w-6xl mx-auto">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 mb-8 bg-card">
+        <TabsList className="grid w-full grid-cols-3 mb-8 bg-card">
           <TabsTrigger
             value="parishes"
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300 animate-fade-in"
           >
             <MapPin className="w-4 h-4 mr-2" />
             Parishes
-          </TabsTrigger>
-          <TabsTrigger
-            value="villages"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300 animate-fade-in"
-          >
-            <Users className="w-4 h-4 mr-2" />
-            Villages
           </TabsTrigger>
           <TabsTrigger
             value="manifesto"
@@ -246,36 +250,48 @@ export function HoimaCivicTabs() {
                   <CardDescription>{parish.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mb-4">
                     <Badge variant="secondary" className="bg-primary/10 text-primary">
                       Population: {parish.population}
                     </Badge>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </TabsContent>
+                  <Button
+                    onClick={() => toggleParishExpansion(parish.name)}
+                    className="w-full bg-yellow-500 hover:bg-accent/90 text-accent-foreground"
+                  >
+                    {expandedParish === parish.name ? (
+                      <ChevronUp className="w-4 h-4 mr-2" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4 mr-2" />
+                    )}
+                    {expandedParish === parish.name ? "Hide" : "Show"} Villages (
+                    {getVillagesForParish(parish.name).length})
+                  </Button>
 
-        <TabsContent value="villages" className="animate-fade-in">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {villages.map((village, index) => (
-              <Card
-                key={village.name}
-                className="hover:shadow-md transition-all duration-300 animate-slide-up"
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-lg flex items-center gap-2 text-foreground">
-                    <Users className="w-4 h-4 text-primary" />
-                    {village.name}
-                  </CardTitle>
-                  <CardDescription>Parish: {village.parish}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Badge variant="outline" className="border-primary text-primary">
-                    {village.households} Households
-                  </Badge>
+                  {expandedParish === parish.name && (
+                    <div className="mt-4 space-y-2 animate-fade-in">
+                      <div className="border-t pt-4">
+                        <h4 className="font-semibold text-sm text-foreground mb-3">Villages in {parish.name}:</h4>
+                        <div className="space-y-2">
+                          {getVillagesForParish(parish.name).map((village, villageIndex) => (
+                            <div
+                              key={village.name}
+                              className="flex items-center justify-between p-2 bg-muted/50 rounded-md animate-slide-up"
+                              style={{ animationDelay: `${villageIndex * 50}ms` }}
+                            >
+                              <div className="flex items-center gap-2">
+                                <Users className="w-3 h-3 text-accent" />
+                                <span className="text-sm font-medium text-foreground">{village.name}</span>
+                              </div>
+                              <Badge variant="outline" className="border-accent text-black text-xs">
+                                {village.households} HH
+                              </Badge>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}

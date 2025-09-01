@@ -185,6 +185,40 @@ model Question {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime? @updatedAt
 }
+model Village {  
+  id         String       @id @default(cuid())
+  name      String @unique
+  description    String
+  population   Int
+  parish   Parish @relation(fields: [parishId], references: [id])
+  parishId    String
+  houseHolds   Int @default(0)
+  members     Member[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+}
+model Parish {  
+  id         String       @id @default(cuid())
+  name      String @unique
+  description    String
+  population   Int
+  villages   Village[]
+  members   Member[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+}
+model Member {  
+  id         String       @id @default(cuid())
+  name      String @unique
+  phone    String @unique
+  email     String @unique
+  parish   Parish @relation(fields: [parishId], references: [id])
+  parishId    String
+  village   Village @relation(fields: [villageId], references: [id])
+  villageId    String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+}
 model QuestionView {
   id          String   @id @default(cuid())
   question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
