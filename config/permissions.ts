@@ -45,35 +45,26 @@ export const permissions: ModulePermissions[] = [
     },
   },
   {
-    display: "Sales",
-    name: "sales",
+    display: "Parishes",
+    name: "parishes",
     permissions: {
-      create: "sales.create",
-      read: "sales.read",
-      update: "sales.update",
-      delete: "sales.delete",
+      create: "parishes.create",
+      read: "parishes.read",
+      update: "parishes.update",
+      delete: "parishes.delete",
     },
   },
   {
-    display: "Customers",
-    name: "customers",
+    display: "Villages",
+    name: "villages",
     permissions: {
-      create: "customers.create",
-      read: "customers.read",
-      update: "customers.update",
-      delete: "customers.delete",
+      create: "villages.create",
+      read: "villages.read",
+      update: "villages.update",
+      delete: "villages.delete",
     },
   },
-  {
-    display: "Orders",
-    name: "orders",
-    permissions: {
-      create: "orders.create",
-      read: "orders.read",
-      update: "orders.update",
-      delete: "orders.delete",
-    },
-  },
+
   {
     display: "Banners",
     name: "banners",
@@ -102,16 +93,6 @@ export const permissions: ModulePermissions[] = [
       read: "settings.read",
       update: "settings.update",
       delete: "settings.delete",
-    },
-  },
-  {
-    display: "Categories",
-    name: "categories",
-    permissions: {
-      create: "categories.create",
-      read: "categories.read",
-      update: "categories.update",
-      delete: "categories.delete",
     },
   },
   {

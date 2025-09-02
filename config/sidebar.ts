@@ -8,6 +8,7 @@ import {
   CircleDollarSign,
   FolderTree,
   Home,
+  House,
   Image,
   LucideIcon,
   Presentation,
@@ -111,6 +112,20 @@ export const sidebarLinks: ISidebarLink[] = [
     dropdown: false,
     href: "/dashboard/blogs",
     permission: "blogs.read",
+  },
+  {
+    title: "Parishes",
+    icon: House,
+    dropdown: false,
+    href: "/dashboard/parishes",
+    permission: "parishes.read",
+  },
+  {
+    title: "Villages",
+    icon: House,
+    dropdown: false,
+    href: "/dashboard/villages",
+    permission: "villages.read",
   },
   {
     title: "N'osigaki",
