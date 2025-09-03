@@ -4,9 +4,9 @@ import React from "react";
 import Select from "react-tailwindcss-select";
 import { Option, Options } from "react-tailwindcss-select/dist/components/type";
 type FormSelectInputProps = {
-  options: Options;
+  options: any;
   label: string;
-  option: Option;
+  option: any;
   setOption: any;
   href?: string;
   labelShown?: boolean;

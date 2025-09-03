@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/dialog";
 import { formatBytes } from "@/lib/formatBytes";
 import { generateSlug } from "@/lib/generateSlug";
-import { createBulkCategories } from "@/actions/categories";
 import toast from "react-hot-toast";
 import exportDataToExcel from "@/lib/exportDataToExcel";
 import { FaFileExcel } from "react-icons/fa";
@@ -121,19 +120,6 @@ export default function TableHeader({
 
           try {
             setLoading(true);
-            if (model === "category") {
-              const categories = json.map((item: any) => {
-                return {
-                  title: item.Title,
-                  slug: generateSlug(item.Title),
-                  description: item.Description,
-                  imageUrl: item.Image,
-                  mainCategoryId: item.mainCategoryId,
-                  status: true,
-                };
-              });
-              await createBulkCategories(categories);
-            }
             setLoading(false);
             setUploadSuccess(true);
             // window.location.reload();

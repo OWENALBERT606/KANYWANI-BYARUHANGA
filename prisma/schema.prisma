@@ -150,6 +150,17 @@ model Member {
   updatedAt  DateTime? @updatedAt
 }
 
+model Promise {  
+  id         String       @id @default(cuid())
+  title      String @unique
+  why    String
+  solution     String
+  commitments   String[]
+  impact     String 
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime? @updatedAt
+}
+
 model BlogComment {
   id            String       @id @default(cuid())
   content       String

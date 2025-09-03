@@ -10,8 +10,8 @@ import ImageColumn from "@/components/DataTableColumns/ImageColumn";
 import SortableColumn from "@/components/DataTableColumns/SortableColumn";
 import { ColumnDef } from "@tanstack/react-table";
 import ActionColumn from "@/components/DataTableColumns/ActionColumn";
-import { Parish } from "@prisma/client";
-export const columns: ColumnDef<Parish>[] = [
+import { Parish, Promise } from "@prisma/client";
+export const columns: ColumnDef<Promise>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -35,22 +35,18 @@ export const columns: ColumnDef<Parish>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "name",
-    header: ({ column }) => <SortableColumn column={column} title="Name" />,
+    accessorKey: "title",
+    header: ({ column }) => <SortableColumn column={column} title="Title" />,
   },
  
   {
-    accessorKey: "population",
-    header: ({ column }) => <SortableColumn column={column} title="Population" />,
+    accessorKey: "why",
+    header: ({ column }) => <SortableColumn column={column} title="Why" />,
   },
  
   {
-    accessorKey: "description",
-    header: ({ column }) => <SortableColumn column={column} title="Description" />,
-  },
-  {
-    accessorKey: "villages.length",
-    header: ({ column }) => <SortableColumn column={column} title="Villages" />,
+    accessorKey: "solution",
+    header: ({ column }) => <SortableColumn column={column} title="Solution" />,
   },
  
 
@@ -62,13 +58,13 @@ export const columns: ColumnDef<Parish>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const parishes = row.original;
+      const promises = row.original;
       return (
         <ActionColumn
           row={row}
-          model="parish"
-          editEndpoint={`parishes/update/${parishes.id}`}
-          id={parishes.id}
+          model="promises"
+          editEndpoint={`parishes/update/${promises.id}`}
+          id={promises.id}
         />
       );
     },

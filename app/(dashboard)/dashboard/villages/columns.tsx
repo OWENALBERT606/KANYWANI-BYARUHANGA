@@ -10,8 +10,8 @@ import ImageColumn from "@/components/DataTableColumns/ImageColumn";
 import SortableColumn from "@/components/DataTableColumns/SortableColumn";
 import { ColumnDef } from "@tanstack/react-table";
 import ActionColumn from "@/components/DataTableColumns/ActionColumn";
-import { Parish } from "@prisma/client";
-export const columns: ColumnDef<Parish>[] = [
+import { Parish, Village } from "@prisma/client";
+export const columns: ColumnDef<Village>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -40,8 +40,8 @@ export const columns: ColumnDef<Parish>[] = [
   },
  
   {
-    accessorKey: "population",
-    header: ({ column }) => <SortableColumn column={column} title="Population" />,
+    accessorKey: "houseHolds",
+    header: ({ column }) => <SortableColumn column={column} title="House holds" />,
   },
  
   {
@@ -49,8 +49,8 @@ export const columns: ColumnDef<Parish>[] = [
     header: ({ column }) => <SortableColumn column={column} title="Description" />,
   },
   {
-    accessorKey: "villages.length",
-    header: ({ column }) => <SortableColumn column={column} title="Villages" />,
+    accessorKey: "parish.name",
+    header: ({ column }) => <SortableColumn column={column} title="Parish"/>,
   },
  
 

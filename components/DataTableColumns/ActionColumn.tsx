@@ -25,6 +25,8 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { deleteUser } from "@/actions/users";
 import { deleteBlogById } from "@/actions/blogs";
+import { deleteParish } from "@/actions/parishes";
+import { deletePromise } from "@/actions/promise";
 
 type ActionColumnProps = {
   row: any;
@@ -50,6 +52,20 @@ export default function ActionColumn({
         toast.success(`${model} Deleted Successfully`);
       } else if (model === "blog") {
         const res = await deleteBlogById(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }
+      else if (model === "promises") {
+        const res = await deletePromise(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }
+      else if (model === "parish") {
+        const res = await deleteParish(id);
         if (res?.ok) {
           window.location.reload();
         }

@@ -35,6 +35,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react"
+import { Parish, Promise } from "@prisma/client"
 
 const parishes = [
   { name: "Bujumbura Parish", population: "12,500", description: "Central parish with main market area" },
@@ -45,19 +46,6 @@ const parishes = [
   { name: "Buhimba Parish", population: "6,900", description: "Rural parish with fishing activities" },
 ]
 
-const villages = [
-  { name: "Bujumbura Central", parish: "Bujumbura Parish", households: 450 },
-  { name: "Kiryatete East", parish: "Kiryatete Parish", households: 320 },
-  { name: "Kiryatete West", parish: "Kiryatete Parish", households: 280 },
-  { name: "Kyabigambire North", parish: "Kyabigambire Parish", households: 380 },
-  { name: "Kyabigambire South", parish: "Kyabigambire Parish", households: 410 },
-  { name: "Mparo Central", parish: "Mparo Parish", households: 290 },
-  { name: "Mparo Hill", parish: "Mparo Parish", households: 220 },
-  { name: "Kigorobya Market", parish: "Kigorobya Parish", households: 520 },
-  { name: "Kigorobya Trading", parish: "Kigorobya Parish", households: 380 },
-  { name: "Buhimba Landing", parish: "Buhimba Parish", households: 250 },
-  { name: "Buhimba Village", parish: "Buhimba Parish", households: 190 },
-]
 
 const manifestoPromises = [
   {
@@ -173,7 +161,7 @@ const manifestoDetails = {
   },
 }
 
-export function HoimaCivicTabs() {
+export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[],villages:any, promises: Promise[]}) {
   const [activeTab, setActiveTab] = useState("parishes")
   const [expandedParish, setExpandedParish] = useState<string | null>(null)
   const [registrationData, setRegistrationData] = useState({
@@ -199,8 +187,8 @@ export function HoimaCivicTabs() {
     })
   }
 
-  const getVillagesForParish = (parishName: string) => {
-    return villages.filter((village) => village.parish === parishName)
+  const getVillagesForParish = (parishId: string) => {
+    return villages.filter((village:any) => village.parishId === parishId)
   }
 
   const toggleParishExpansion = (parishName: string) => {
@@ -264,18 +252,19 @@ export function HoimaCivicTabs() {
                     ) : (
                       <ChevronDown className="w-4 h-4 mr-2" />
                     )}
-                    {expandedParish === parish.name ? "Hide" : "Show"} Villages (
-                    {getVillagesForParish(parish.name).length})
+                    {expandedParish === parish.id ? "Hide" : "Show"} Villages (
+                    {getVillagesForParish(parish.id).length})
                   </Button>
 
                   {expandedParish === parish.name && (
+                   
                     <div className="mt-4 space-y-2 animate-fade-in">
                       <div className="border-t pt-4">
                         <h4 className="font-semibold text-sm text-foreground mb-3">Villages in {parish.name}:</h4>
                         <div className="space-y-2">
-                          {getVillagesForParish(parish.name).map((village, villageIndex) => (
+                          {getVillagesForParish(parish.id).map((village:any, villageIndex:any) => (
                             <div
-                              key={village.name}
+                              key={village.id}
                               className="flex items-center justify-between p-2 bg-muted/50 rounded-md animate-slide-up"
                               style={{ animationDelay: `${villageIndex * 50}ms` }}
                             >
@@ -284,7 +273,7 @@ export function HoimaCivicTabs() {
                                 <span className="text-sm font-medium text-foreground">{village.name}</span>
                               </div>
                               <Badge variant="outline" className="border-accent text-black text-xs">
-                                {village.households} HH
+                                {village.houseHolds} Households
                               </Badge>
                             </div>
                           ))}

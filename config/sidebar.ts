@@ -5,6 +5,7 @@ import {
   BarChart4,
   Book,
   Cable,
+  CheckCheck,
   CircleDollarSign,
   FolderTree,
   Home,
@@ -126,6 +127,13 @@ export const sidebarLinks: ISidebarLink[] = [
     dropdown: false,
     href: "/dashboard/villages",
     permission: "villages.read",
+  },
+  {
+    title: "Promises",
+    icon: CheckCheck,
+    dropdown: false,
+    href: "/dashboard/promises",
+    permission: "promises.read",
   },
   {
     title: "N'osigaki",

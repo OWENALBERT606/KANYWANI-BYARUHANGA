@@ -1,6 +1,18 @@
+import { getParishes } from "@/actions/parishes";
+import { getPromises } from "@/actions/promise";
+import { getVillages } from "@/actions/villages";
 import { HoimaCivicTabs } from "@/components/hoima-civic-tabs"
+import { Parish, Promise, Village } from "@prisma/client";
 
-export default function Home() {
+export default async function Home() {
+    const parishes: Parish[] = (await getParishes()) || [];
+        const villages: Village[] = (await getVillages()) || [];
+
+      const promises: Promise[] = (await getPromises()) || [];
+
+      console.log(parishes)
+    
+  
   return (
     <main className="min-h-screen px-4 md:px-12 lg:px-24 bg-background">
       <div className="container mx-auto px-4 py-8">
@@ -8,7 +20,7 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-foreground mb-4 text-balance">Hoima City West</h1>
           <p className="text-lg text-muted-foreground text-pretty">Building a Better Future Together</p>
         </div>
-        <HoimaCivicTabs />
+        <HoimaCivicTabs promises={promises} villages={villages} parishes={parishes}/>
       </div>
     </main>
   )
