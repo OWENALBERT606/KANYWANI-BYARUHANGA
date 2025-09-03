@@ -34,6 +34,7 @@ import {
   MapIcon,
   ChevronDown,
   ChevronUp,
+  Book,
 } from "lucide-react"
 import { Parish, Promise } from "@prisma/client"
 
@@ -162,6 +163,7 @@ const manifestoDetails = {
 }
 
 export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[],villages:any, promises: Promise[]}) {
+
   const [activeTab, setActiveTab] = useState("parishes")
   const [expandedParish, setExpandedParish] = useState<string | null>(null)
   const [registrationData, setRegistrationData] = useState({
@@ -298,25 +300,25 @@ export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[]
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {manifestoPromises.map((category, categoryIndex) => {
-                const IconComponent = category.icon
+              {promises.map((category, categoryIndex) => {
+                const IconComponent = Book
                 return (
                   <Card
-                    key={category.category}
+                    key={category.title}
                     className="hover:shadow-lg transition-all duration-300 animate-slide-up border-l-4 border-l-accent"
                     style={{ animationDelay: `${categoryIndex * 150}ms` }}
                   >
                     <CardHeader>
                       <CardTitle className="flex items-center gap-3 text-foreground">
                         <div className="p-2 rounded-lg bg-accent/10">
-                          <IconComponent className="w-6 h-6 text-accent" />
+                          <IconComponent className="w-6 h-6 text-yellow-600" />
                         </div>
-                        {category.category}
+                        {category.title}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-3">
-                        {category.promises.map((promise, promiseIndex) => (
+                        {category.commitments.map((promise, promiseIndex) => (
                           <li
                             key={promiseIndex}
                             className="flex items-start gap-3 animate-fade-in"
@@ -330,19 +332,19 @@ export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[]
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button className="w-full mt-4 bg-primary hover:bg-primary/90 text-primary-foreground">
-                            Learn More About {category.category}
+                            Learn More About {category.title}
                           </Button>
                         </DialogTrigger>
                         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
                           <DialogHeader>
                             <DialogTitle className="flex items-center gap-3 text-xl">
                               <div className="p-2 rounded-lg bg-accent/10">
-                                <IconComponent className="w-6 h-6 text-accent" />
+                                <IconComponent className="w-6 h-6 text-yellow-600" />
                               </div>
-                              {category.category} Development Plan
+                              {category.title} Development Plan
                             </DialogTitle>
                             <DialogDescription>
-                              Understanding the importance and impact of {category.category.toLowerCase()} in our
+                              Understanding the importance and impact of {category.title.toLowerCase()} in our
                               community
                             </DialogDescription>
                           </DialogHeader>
@@ -350,25 +352,25 @@ export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[]
                             <div>
                               <h4 className="font-semibold text-foreground mb-2">Why This Matters</h4>
                               <p className="text-muted-foreground text-pretty">
-                                {manifestoDetails[category.category as keyof typeof manifestoDetails]?.importance}
+                                {category.why}
                               </p>
                             </div>
                             <div>
                               <h4 className="font-semibold text-foreground mb-2">Current Impact on Our Community</h4>
                               <p className="text-muted-foreground text-pretty">
-                                {manifestoDetails[category.category as keyof typeof manifestoDetails]?.impact}
+                                {category.impact}
                               </p>
                             </div>
                             <div>
                               <h4 className="font-semibold text-foreground mb-2">Our Solution</h4>
                               <p className="text-muted-foreground text-pretty">
-                                {manifestoDetails[category.category as keyof typeof manifestoDetails]?.solution}
+                                {category.solution}
                               </p>
                             </div>
                             <div className="bg-primary/5 p-4 rounded-lg">
                               <h4 className="font-semibold text-foreground mb-2">My Specific Commitments:</h4>
                               <ul className="space-y-2">
-                                {category.promises.map((promise, index) => (
+                                {category.commitments.map((promise, index) => (
                                   <li key={index} className="flex items-start gap-2">
                                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                                     <span className="text-sm text-foreground">{promise}</span>
