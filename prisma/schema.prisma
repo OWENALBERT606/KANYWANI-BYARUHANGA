@@ -120,7 +120,7 @@ model Village {
   name      String @unique
   description    String
   population   Int
-  parish   Parish @relation(fields: [parishId], references: [id])
+  parish   Parish @relation(fields: [parishId], references: [id],onDelete: Cascade)
   parishId    String
   houseHolds   Int @default(0)
   members     Member[]
