@@ -18,13 +18,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Category } from "@prisma/client";
 import { getNormalDate } from "@/lib/getNormalDate";
 
 export default function CustomDataTable({
   categories,
 }: {
-  categories: Category[];
+  categories: any[];
 }) {
   console.log(categories);
   return (
