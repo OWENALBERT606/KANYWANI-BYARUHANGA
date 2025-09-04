@@ -13,8 +13,6 @@ interface Video {
   description: string
   thumbnail: string
   videoUrl: string
-  duration: string
-  views: string
 }
 
 interface VideoPlayerProps {
@@ -35,14 +33,12 @@ export function VideoPlayer({ video, onClose }: VideoPlayerProps) {
     if (!video) return
 
     const updateTime = () => setCurrentTime(video.currentTime)
-    const updateDuration = () => setDuration(video.duration)
-
     video.addEventListener("timeupdate", updateTime)
-    video.addEventListener("loadedmetadata", updateDuration)
+    // video.addEventListener("loadedmetadata", updateDuration)
 
     return () => {
       video.removeEventListener("timeupdate", updateTime)
-      video.removeEventListener("loadedmetadata", updateDuration)
+      // video.removeEventListener("loadedmetadata", updateDuration)
     }
   }, [])
 
@@ -89,7 +85,7 @@ export function VideoPlayer({ video, onClose }: VideoPlayerProps) {
       <CardHeader className="flex flex-row items-center justify-between bg-yellow-500 text-yellow-900">
         <div>
           <CardTitle className="text-xl font-bold">{video.title}</CardTitle>
-          <CardDescription className="text-yellow-800">{video.views} views</CardDescription>
+          <CardDescription className="text-yellow-800">VIEWING</CardDescription>
         </div>
         <Button onClick={onClose} variant="ghost" size="sm" className="text-yellow-900 hover:bg-yellow-400">
           <X className="w-5 h-5" />

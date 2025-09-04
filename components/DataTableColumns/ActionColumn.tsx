@@ -28,6 +28,7 @@ import { deleteBlogById } from "@/actions/blogs";
 import { deleteParish } from "@/actions/parishes";
 import { deletePromise } from "@/actions/promise";
 import { deleteMember } from "@/actions/members";
+import { deleteNosigaki } from "@/actions/nosigaki";
 
 type ActionColumnProps = {
   row: any;
@@ -67,6 +68,13 @@ export default function ActionColumn({
       }
       else if (model === "promises") {
         const res = await deletePromise(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }
+      else if (model === "nosigaki") {
+        const res = await deleteNosigaki(id);
         if (res?.ok) {
           window.location.reload();
         }

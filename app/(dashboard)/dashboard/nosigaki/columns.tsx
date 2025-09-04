@@ -57,13 +57,13 @@ export const columns: ColumnDef<Nosigaki>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const parishes = row.original;
+      const nosigakis = row.original;
       return (
         <ActionColumn
           row={row}
-          model="parish"
-          editEndpoint={`parishes/update/${parishes.id}`}
-          id={parishes.id}
+          model="nosigaki"
+          editEndpoint={`nosigaki/update/${nosigakis.id}`}
+          id={nosigakis.id}
         />
       );
     },

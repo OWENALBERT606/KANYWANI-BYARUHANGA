@@ -12,53 +12,51 @@ interface Video {
   description: string
   thumbnail: string
   videoUrl: string
-  duration: string
-  views: string
 }
 
-const nosigakiVideos: Video[] = [
-  {
-    id: "1",
-    title: "African Safari Adventure",
-    description:
-      "Experience the raw beauty of African wildlife in their natural habitat. Follow lions, elephants, and zebras across the savanna.",
-    thumbnail: "/nature-documentary-landscape.png",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    duration: "18:45",
-    views: "2.8M",
-  },
-  {
-    id: "2",
-    title: "Ocean Depths Exploration",
-    description:
-      "Dive deep into the mysterious world beneath the waves and discover incredible marine life in crystal clear waters.",
-    thumbnail: "/space-exploration-cosmos-stars.png",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    duration: "22:30",
-    views: "1.9M",
-  },
-  {
-    id: "3",
-    title: "Mountain Peak Expedition",
-    description:
-      "Join an epic journey to the world's highest peaks and witness breathtaking views from above the clouds.",
-    thumbnail: "/modern-architecture-building.png",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    duration: "16:12",
-    views: "3.2M",
-  },
-  {
-    id: "4",
-    title: "Rainforest Mysteries",
-    description: "Uncover the secrets of the Amazon rainforest and meet the incredible creatures that call it home.",
-    thumbnail: "/professional-cooking-kitchen-chef.png",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    duration: "25:08",
-    views: "4.1M",
-  },
-]
+// const mpomurroVideos: Video[] = [
+//   {
+//     id: "1",
+//     title: "Future of AI Technology",
+//     description:
+//       "Explore cutting-edge artificial intelligence developments and how they're reshaping our world in unprecedented ways.",
+//     thumbnail: "/space-exploration-cosmos-stars.png",
+//     videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+//     views: "5.7M",
+//   },
+//   {
+//     id: "2",
+//     title: "Urban Architecture Masterpieces",
+//     description:
+//       "Discover the most innovative urban designs and architectural wonders that define modern city skylines worldwide.",
+//     thumbnail: "/modern-architecture-building.png",
+//     videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+//     duration: "11:55",
+//     views: "3.4M",
+//   },
+//   {
+//     id: "3",
+//     title: "Gourmet Fusion Cuisine",
+//     description:
+//       "Master the art of fusion cooking with internationally acclaimed chefs creating extraordinary culinary experiences.",
+//     thumbnail: "/professional-cooking-kitchen-chef.png",
+//     videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+//     duration: "19:40",
+//     views: "2.9M",
+//   },
+//   {
+//     id: "4",
+//     title: "Digital Art Revolution",
+//     description:
+//       "Witness the transformation of digital art and how creators are pushing boundaries with new technologies.",
+//     thumbnail: "/nature-documentary-landscape.png",
+//     videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+//     duration: "13:17",
+//     views: "4.6M",
+//   },
+// ]
 
-export function NosigakiVideoGallery() {
+export function NosigakiVideoGallery({ mpomurros}: { mpomurros:any}) {
   const [selectedVideo, setSelectedVideo] = useState<Video | null>(null)
 
   return (
@@ -70,7 +68,7 @@ export function NosigakiVideoGallery() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {nosigakiVideos.map((video) => (
+        {mpomurros?.map((video:any) => (
           <Card
             key={video.id}
             className="group hover:shadow-lg transition-all duration-300 border-yellow-200 hover:border-yellow-400"
@@ -90,10 +88,6 @@ export function NosigakiVideoGallery() {
                 >
                   <Play className="w-12 h-12 text-white drop-shadow-lg" fill="currentColor" />
                 </Button>
-                <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-sm flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
-                  {video.duration}
-                </div>
               </div>
             </CardHeader>
             <CardContent className="p-4">
@@ -102,10 +96,6 @@ export function NosigakiVideoGallery() {
                 {video.description}
               </CardDescription>
               <div className="flex items-center justify-between text-sm text-yellow-600">
-                <div className="flex items-center gap-1">
-                  <Eye className="w-4 h-4" />
-                  {video.views} views
-                </div>
                 <Button
                   onClick={() => setSelectedVideo(video)}
                   className="bg-yellow-500 hover:bg-yellow-600 text-yellow-900 font-medium"
