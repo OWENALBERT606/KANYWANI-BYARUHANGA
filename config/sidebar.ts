@@ -15,6 +15,7 @@ import {
   Presentation,
   Settings,
   Users,
+  Users2,
 } from "lucide-react";
 
 export interface ISidebarLink {
@@ -148,6 +149,13 @@ export const sidebarLinks: ISidebarLink[] = [
     icon: BarChart2,
     dropdown: false,
     permission: "mpomurro.read",
+  },
+  {
+    title: "Members",
+    href: "/dashboard/members",
+    icon: Users2,
+    dropdown: false,
+    permission: "members.read",
   },
   {
     title: "Banners",

@@ -37,132 +37,10 @@ import {
   Book,
 } from "lucide-react"
 import { Parish, Promise } from "@prisma/client"
-
-const parishes = [
-  { name: "Bujumbura Parish", population: "12,500", description: "Central parish with main market area" },
-  { name: "Kiryatete Parish", population: "8,200", description: "Agricultural hub with fertile lands" },
-  { name: "Kyabigambire Parish", population: "9,800", description: "Growing residential area" },
-  { name: "Mparo Parish", population: "7,600", description: "Traditional community center" },
-  { name: "Kigorobya Parish", population: "11,200", description: "Commercial and trading center" },
-  { name: "Buhimba Parish", population: "6,900", description: "Rural parish with fishing activities" },
-]
+import NewMemberForm from "./Forms/newMemberForm"
 
 
-const manifestoPromises = [
-  {
-    category: "Healthcare",
-    icon: Stethoscope,
-    promises: [
-      "Establish 3 new health centers in underserved parishes",
-      "Provide free medical camps every quarter",
-      "Ensure 24/7 ambulance services for all villages",
-      "Stock all health facilities with essential medicines",
-    ],
-  },
-  {
-    category: "Education",
-    icon: GraduationCap,
-    promises: [
-      "Build 2 new secondary schools in rural parishes",
-      "Provide free scholastic materials to all primary students",
-      "Establish vocational training centers in each parish",
-      "Implement adult literacy programs for parents",
-    ],
-  },
-  {
-    category: "Infrastructure",
-    icon: Building,
-    promises: [
-      "Tarmac all major roads connecting parishes",
-      "Install solar street lights in all trading centers",
-      "Build modern markets in each parish",
-      "Construct bridges over seasonal rivers",
-    ],
-  },
-  {
-    category: "Water & Sanitation",
-    icon: Droplets,
-    promises: [
-      "Drill boreholes in every village without clean water",
-      "Build public toilets in all trading centers",
-      "Establish waste collection systems",
-      "Protect all natural water sources from pollution",
-    ],
-  },
-  {
-    category: "Economic Development",
-    icon: Target,
-    promises: [
-      "Establish microfinance schemes for small businesses",
-      "Create youth employment programs",
-      "Support farmers with modern agricultural tools",
-      "Promote tourism in scenic areas of our constituency",
-    ],
-  },
-  {
-    category: "Energy",
-    icon: Zap,
-    promises: [
-      "Connect all parishes to the national electricity grid",
-      "Subsidize solar panel installation for households",
-      "Establish charging stations for mobile phones",
-      "Promote clean cooking energy solutions",
-    ],
-  },
-]
-
-const manifestoDetails = {
-  Healthcare: {
-    importance:
-      "Access to quality healthcare is a fundamental human right and the foundation of a thriving community. In Hoima City West, many of our people travel long distances to access basic medical services, often arriving too late for effective treatment.",
-    impact:
-      "Poor healthcare access leads to preventable deaths, especially among mothers and children. Families spend their savings on medical expenses, pushing them deeper into poverty. Our productivity as a community suffers when our people are sick and cannot work or attend school.",
-    solution:
-      "By establishing health centers in every parish and ensuring 24/7 ambulance services, we will save lives and reduce the financial burden on families. Free medical camps will provide preventive care, catching diseases early when they're easier and cheaper to treat.",
-  },
-  Education: {
-    importance:
-      "Education is the key that unlocks the door to opportunity and prosperity. Every child in Hoima City West deserves access to quality education, regardless of their family's economic status.",
-    impact:
-      "Limited educational facilities force our children to walk long distances to school, leading to high dropout rates. Many talented young people cannot pursue secondary education due to lack of nearby schools, perpetuating the cycle of poverty in our community.",
-    solution:
-      "Building new secondary schools and providing free scholastic materials will ensure no child is left behind. Vocational training centers will equip our youth with practical skills for immediate employment, while adult literacy programs will empower parents to support their children's education.",
-  },
-  Infrastructure: {
-    importance:
-      "Good roads, reliable electricity, and modern markets are the backbone of economic development. They connect our communities, facilitate trade, and attract investment to our constituency.",
-    impact:
-      "Poor roads make it difficult for farmers to transport their produce to markets, leading to post-harvest losses. Lack of proper infrastructure discourages businesses from investing in our area, limiting job opportunities for our people.",
-    solution:
-      "Tarmacking major roads will reduce transportation costs and time, making our agricultural products more competitive. Modern markets and solar street lights will create a conducive environment for business, attracting investors and creating jobs.",
-  },
-  "Water & Sanitation": {
-    importance:
-      "Clean water is life itself. Without access to safe drinking water and proper sanitation, our communities cannot thrive. Water-related diseases consume resources that could be used for development.",
-    impact:
-      "Many of our villages still lack access to clean water, forcing women and children to walk long distances to fetch water from unsafe sources. This leads to waterborne diseases like cholera and diarrhea, particularly affecting our children. Poor sanitation in trading centers creates health hazards and discourages business activities.",
-    solution:
-      "Drilling boreholes in every village will save time and lives, allowing women to engage in productive activities instead of walking long distances for water. Protected water sources and proper waste management will dramatically reduce disease outbreaks and healthcare costs.",
-  },
-  "Economic Development": {
-    importance:
-      "A thriving economy provides opportunities for all our people to improve their livelihoods. Small businesses are the engine of local economic growth, creating jobs and keeping money circulating within our community.",
-    impact:
-      "Limited access to capital prevents many of our people from starting or expanding businesses. Youth unemployment leads to rural-urban migration, depleting our constituency of its most energetic workforce. Farmers lack modern tools and techniques, limiting their productivity and income.",
-    solution:
-      "Microfinance schemes will provide affordable credit to small business owners and farmers. Youth employment programs will create opportunities for our young people to stay and contribute to local development. Modern agricultural tools will increase productivity and farmers' incomes.",
-  },
-  Energy: {
-    importance:
-      "Reliable electricity is essential for modern life and economic development. It powers businesses, schools, and health centers, and enables our people to access information and opportunities through technology.",
-    impact:
-      "Many of our parishes still lack electricity connection, limiting business hours to daylight and preventing the use of modern equipment. Students cannot study effectively at night, and health centers cannot provide quality services without reliable power.",
-    solution:
-      "Connecting all parishes to the national grid will transform our constituency, enabling 24-hour businesses and improving quality of life. Solar panel subsidies will provide affordable energy alternatives, while mobile phone charging stations will keep our communities connected.",
-  },
-}
-
-export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[],villages:any, promises: Promise[]}) {
+export function HoimaCivicTabs({parishes,parishOptions,villageOptions,promises,villages}: {parishes: Parish[],villages:any,parishOptions:any,villageOptions:any, promises: Promise[]}) {
 
   const [activeTab, setActiveTab] = useState("parishes")
   const [expandedParish, setExpandedParish] = useState<string | null>(null)
@@ -220,7 +98,7 @@ export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[]
             className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground transition-all duration-300 animate-fade-in"
           >
             <UserPlus className="w-4 h-4 mr-2" />
-            Join Us
+            Join Our Team
           </TabsTrigger>
         </TabsList>
 
@@ -397,7 +275,7 @@ export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[]
                   </p>
                   <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
                     <Heart className="w-4 h-4 mr-2" />
-                    Join Our Movement
+                    Join Our Team
                   </Button>
                 </CardContent>
               </Card>
@@ -411,7 +289,7 @@ export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[]
               <h2 className="text-3xl font-bold text-foreground mb-4 text-balance">Join Our Movement</h2>
               <p className="text-lg text-muted-foreground text-pretty">
                 Be part of the change you want to see in Hoima City West. Together, we can build a better future for our
-                community.
+                community and Country
               </p>
             </div>
 
@@ -421,103 +299,14 @@ export function HoimaCivicTabs({parishes,promises,villages}: {parishes: Parish[]
                   <div className="p-2 rounded-lg bg-primary/10">
                     <UserPlus className="w-6 h-6 text-primary" />
                   </div>
-                  Register as a Movement Member
+                  Register to join our team
                 </CardTitle>
                 <CardDescription>
-                  Fill out the form below to officially join our movement and stay updated on our progress.
+                  Fill out the form below to officially join our team and stay updated on our progress.
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleRegistration} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="fullName">Full Name *</Label>
-                      <Input
-                        id="fullName"
-                        value={registrationData.fullName}
-                        onChange={(e) => setRegistrationData({ ...registrationData, fullName: e.target.value })}
-                        placeholder="Enter your full name"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number *</Label>
-                      <div className="relative">
-                        <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input
-                          id="phone"
-                          value={registrationData.phone}
-                          onChange={(e) => setRegistrationData({ ...registrationData, phone: e.target.value })}
-                          placeholder="+256 700 000 000"
-                          className="pl-10"
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input
-                        id="email"
-                        type="email"
-                        value={registrationData.email}
-                        onChange={(e) => setRegistrationData({ ...registrationData, email: e.target.value })}
-                        placeholder="your.email@example.com"
-                        className="pl-10"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="parish">Parish *</Label>
-                      <div className="relative">
-                        <MapIcon className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input
-                          id="parish"
-                          value={registrationData.parish}
-                          onChange={(e) => setRegistrationData({ ...registrationData, parish: e.target.value })}
-                          placeholder="Select your parish"
-                          className="pl-10"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="village">Village *</Label>
-                      <div className="relative">
-                        <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input
-                          id="village"
-                          value={registrationData.village}
-                          onChange={(e) => setRegistrationData({ ...registrationData, village: e.target.value })}
-                          placeholder="Enter your village"
-                          className="pl-10"
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="motivation">Why do you want to join our movement?</Label>
-                    <Textarea
-                      id="motivation"
-                      value={registrationData.motivation}
-                      onChange={(e) => setRegistrationData({ ...registrationData, motivation: e.target.value })}
-                      placeholder="Tell us what motivates you to be part of this change..."
-                      rows={4}
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                    <UserPlus className="w-4 h-4 mr-2" />
-                    Join the Movement
-                  </Button>
-                </form>
+                <NewMemberForm parishOptions={parishOptions} villageOptions={villageOptions}/>
 
                 <div className="mt-8 p-4 bg-accent/5 rounded-lg">
                   <h4 className="font-semibold text-foreground mb-2">What happens next?</h4>

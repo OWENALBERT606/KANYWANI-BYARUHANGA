@@ -8,9 +8,20 @@ export default async function Home() {
     const parishes: Parish[] = (await getParishes()) || [];
         const villages: Village[] = (await getVillages()) || [];
 
+      const parishOptions = parishes.map((item) => {
+    return {
+      label: item.name,
+      value: item.id,
+    };
+  });
+      const villageOptions = villages.map((item) => {
+    return {
+      label: item.name,
+      value: item.id,
+    };
+  });
       const promises: Promise[] = (await getPromises()) || [];
 
-      console.log(parishes)
     
   
   return (
@@ -20,7 +31,7 @@ export default async function Home() {
           <h1 className="text-4xl font-bold text-foreground mb-4 text-balance">Hoima City West</h1>
           <p className="text-lg text-muted-foreground text-pretty">Building a Better Future Together</p>
         </div>
-        <HoimaCivicTabs promises={promises} villages={villages} parishes={parishes}/>
+        <HoimaCivicTabs villageOptions={villageOptions} parishOptions={parishOptions} promises={promises} villages={villages} parishes={parishes}/>
       </div>
     </main>
   )

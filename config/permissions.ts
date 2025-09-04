@@ -74,6 +74,16 @@ export const permissions: ModulePermissions[] = [
       delete: "promises.delete",
     },
   },
+  {
+    display: "Members",
+    name: "members",
+    permissions: {
+      create: "members.create",
+      read: "members.read",
+      update: "members.update",
+      delete: "members.delete",
+    },
+  },
 
   {
     display: "Banners",
