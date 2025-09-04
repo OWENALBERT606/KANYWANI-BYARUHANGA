@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "postinstall": "prisma generate",
-    "preview": "next build && next dev"
+    "preview": "next build && next dev"
 
   },
   "dependencies": {

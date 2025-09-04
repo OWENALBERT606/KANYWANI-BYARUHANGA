@@ -18,6 +18,30 @@ export const ourFileRouter = {
       return { uploadedBy: "JB" };
     }
   ),
+  nosigakiThumbnail: f({ image: { maxFileSize: "2MB" } }).onUploadComplete(
+    async ({ metadata, file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "JB" };
+    }
+  ),
+  mpomurroThumbnail: f({ image: { maxFileSize: "2MB" } }).onUploadComplete(
+    async ({ metadata, file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "JB" };
+    }
+  ),
+  videoUploader: f({ video: { maxFileSize: "16GB" } }).onUploadComplete(
+    async ({ metadata, file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "JB" };
+    }
+  ),
+  mpomurroVideo: f({ video: { maxFileSize: "16GB" } }).onUploadComplete(
+    async ({ metadata, file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "JB" };
+    }
+  ),
   fileUploads: f({
     image: { maxFileSize: "1MB", maxFileCount: 4 },
     pdf: { maxFileSize: "1MB", maxFileCount: 4 },
