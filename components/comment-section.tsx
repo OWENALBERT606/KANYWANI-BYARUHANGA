@@ -11,10 +11,11 @@ import { mockComments, type Comment } from "@/lib/blog-data"
 import { Textarea } from "./ui/textarea"
 
 interface CommentSectionProps {
-  postId: string
+  postId: string;
+  userId:any
 }
 
-export function CommentSection({ postId }: CommentSectionProps) {
+export function CommentSection({ postId,userId }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>(mockComments)
   const [newComment, setNewComment] = useState("")
   const [newAuthor, setNewAuthor] = useState("")

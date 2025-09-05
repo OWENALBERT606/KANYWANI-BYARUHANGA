@@ -1,12 +1,16 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 // import { mockBlogPosts } from "@/lib/blog-data"
 import { Clock, User, ArrowLeft } from "lucide-react"
 import { CommentSection } from "@/components/comment-section"
 import { getBlogs, getDashboardBlogs } from "@/actions/blogs"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/config/auth"
+import CommentForm from "@/components/Forms/comment-form"
+import { getCommentsByBlogId } from "@/actions/comments"
 
 interface BlogPostPageProps {
   params: {
@@ -16,6 +20,10 @@ interface BlogPostPageProps {
 
 export default async function Page({params}: {params: Promise<{ id: string }>}):Promise<any> {
       const {id}=await params;
+
+      const session = await getServerSession(authOptions);
+      const userId=session?.user?.id;
+      const comments=await getCommentsByBlogId(id);
 
       const blogs = (await getDashboardBlogs()) || [];
   const post = blogs.find((p) => p.id === id)
@@ -73,9 +81,24 @@ export default async function Page({params}: {params: Promise<{ id: string }>}):
             />
           </CardContent>
         </Card>
-
+        <div className=" shadow-sm  border-top border-black md:ml-24">
+          <h1 className="text-yellow-600 font-bold">Comments</h1>
+           {
+              comments && comments.length > 0 ? (
+                comments.map((comment: any) => (
+                  <div key={comment.id} className="mb-6 border-b border-muted pb-4">
+                    <p>{comment.content}</p>
+                    <p>BY: {comment?.user.name}</p>
+                  </div>))):(
+                    <div className="">
+                      <p className="text-muted-foreground">No comments yet. Be the first to comment!</p>
+                    
+                    </div>
+                  )
+            }
+        </div>
         {/* Comments Section */}
-        <CommentSection postId={post.id} />
+        <CommentForm userId={userId} postId={post.id} />
       </main>
     </div>
   )
