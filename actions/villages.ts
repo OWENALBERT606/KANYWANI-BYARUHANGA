@@ -45,7 +45,7 @@ export async function createVillage(data: VillageProps) {
 export async function getVillages() {
   try {
     const villages = await db.village.findMany({
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: "asc" },
       include: {
         parish: true,
         members: true,
