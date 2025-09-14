@@ -62,13 +62,13 @@ export const columns: ColumnDef<Village>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const parishes = row.original;
+      const villages = row.original;
       return (
         <ActionColumn
           row={row}
-          model="parish"
-          editEndpoint={`parishes/update/${parishes.id}`}
-          id={parishes.id}
+          model="village"
+          editEndpoint={`villages/update/${villages.id}`}
+          id={villages.id}
         />
       );
     },

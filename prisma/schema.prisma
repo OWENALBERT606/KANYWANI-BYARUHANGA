@@ -142,9 +142,9 @@ model Member {
   name      String
   phone    String @unique
   email     String @unique
-  parish   Parish @relation(fields: [parishId], references: [id])
+  parish   Parish @relation(fields: [parishId], references: [id],onDelete: Cascade)
   parishId    String
-  village   Village @relation(fields: [villageId], references: [id])
+  village   Village @relation(fields: [villageId], references: [id],onDelete: Cascade)
   villageId    String
   motivation   String?
   createdAt  DateTime  @default(now())

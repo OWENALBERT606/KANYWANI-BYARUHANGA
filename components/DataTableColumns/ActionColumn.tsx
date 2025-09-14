@@ -29,6 +29,7 @@ import { deleteParish } from "@/actions/parishes";
 import { deletePromise } from "@/actions/promise";
 import { deleteMember } from "@/actions/members";
 import { deleteNosigaki } from "@/actions/nosigaki";
+import { deleteVillage } from "@/actions/villages";
 
 type ActionColumnProps = {
   row: any;
@@ -61,6 +62,13 @@ export default function ActionColumn({
       }
        else if (model === "member") {
         const res = await deleteMember(id);
+        if (res?.ok) {
+          window.location.reload();
+        }
+        toast.success(`${model} Deleted Successfully`);
+      }
+         else if (model === "village") {
+        const res = await deleteVillage(id);
         if (res?.ok) {
           window.location.reload();
         }
