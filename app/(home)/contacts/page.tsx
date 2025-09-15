@@ -137,7 +137,7 @@ export default function Page() {
 
             {/* Community Engagement Options */}
             <div className="space-y-8">
-              <Card className="border-border">
+              {/* <Card className="border-border">
                 <CardHeader>
                   <CardTitle className="text-2xl text-card-foreground flex items-center gap-2">
                     <Calendar className="h-6 w-6 text-primary" />
@@ -156,9 +156,9 @@ export default function Page() {
                     Schedule Appointment
                   </Button>
                 </CardContent>
-              </Card>
+              </Card> */}
 
-              <Card className="border-border">
+              {/* <Card className="border-border">
                 <CardHeader>
                   <CardTitle className="text-2xl text-card-foreground flex items-center gap-2">
                     <Users className="h-6 w-6 text-primary" />
@@ -177,7 +177,7 @@ export default function Page() {
                     View Upcoming Events
                   </Button>
                 </CardContent>
-              </Card>
+              </Card> */}
 
               <Card className="bg-accent text-accent-foreground border-accent">
                 <CardContent className="p-6">
@@ -203,9 +203,9 @@ export default function Page() {
             Every conversation, every idea, and every concern contributes to building a stronger, more connected
             community.
           </p>
-          <Button size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90">
+          {/* <Button size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90">
             Join Our Newsletter
-          </Button>
+          </Button> */}
         </div>
       </section>
     </div>

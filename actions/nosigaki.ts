@@ -40,7 +40,7 @@ export async function createNosigaki(data: NosigakiProps) {
 export async function getNosigakis() {
   try {
     const nosigakis = await db.nosigaki.findMany({
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: "asc" },
     });
     return nosigakis;
   } catch (error) {

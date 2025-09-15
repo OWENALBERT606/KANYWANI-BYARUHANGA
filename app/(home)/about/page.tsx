@@ -16,11 +16,11 @@ export default function Page() {
         />
         <div className="absolute inset-0 bg-primary/80" />
         <div className="relative z-10 text-center text-primary-foreground max-w-4xl mx-auto px-6">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance">Building a Community Beyond Politics</h1>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">Building a Community Beyond Politicking</h1>
           <p className="text-xl md:text-2xl mb-8 text-balance opacity-90">Empowering Voices, Creating Impact</p>
-          <Button size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90">
+          {/* <Button size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90">
             Learn More <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          </Button> */}
         </div>
       </section>
 
@@ -32,13 +32,13 @@ export default function Page() {
             <blockquote className="text-2xl md:text-3xl font-medium text-foreground mb-6 text-balance">
               "Constructive Social Mobilization for posterity beyond politics"
             </blockquote>
-            <cite className="text-muted-foreground text-lg">— On Constructive Social Mobilization</cite>
+            {/* <cite className="text-muted-foreground text-lg">— On Constructive Social Mobilization</cite> */}
           </div>
         </div>
       </section>
 
       {/* Community Impact Highlights */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Impact Through Action</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -76,10 +76,10 @@ export default function Page() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Personal Journey */}
-      <section className="py-20 bg-popover">
+      {/* <section className="py-20 bg-popover">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16 text-foreground">A Journey of Service</h2>
           <div className="space-y-12">
@@ -132,10 +132,10 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Community Testimonials */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-center mb-16 text-foreground">Voices from the Community</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -173,10 +173,10 @@ export default function Page() {
             </Card>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      {/* <section className="py-20 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-6 text-balance">Join the team for Constructive Change</h2>
           <p className="text-xl mb-8 opacity-90 text-balance">
@@ -195,7 +195,7 @@ export default function Page() {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }

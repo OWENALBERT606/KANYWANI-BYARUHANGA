@@ -6,18 +6,23 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 const carouselItems= [
   {
     image: "/video-clips/hero-3.JPG",
-    title: "Unite for Change",
-    subtitle: "Join the movement and make your voice heard in shaping our shared future.",
+    // title: "Unite for Change",
+    // subtitle: "Join the movement and make your voice heard in shaping our shared future.",
   },
   {
     image: "/video-clips/hero-2.JPG",
-    title: "Empower Your Vote",
-    subtitle: "Your ballot is your power. Educate yourself and choose the leaders who represent you.",
+    // title: "Empower Your Vote",
+    // subtitle: "Your ballot is your power. Educate yourself and choose the leaders who represent you.",
   },
   {
     image: "/video-clips/hero-4.jpg",
-    title: "Lead with Vision",
-    subtitle: "Together, we can build a better society with policies that serve everyone.",
+    // title: "Lead with Vision",
+    // subtitle: "Together, we can build a better society with policies that serve everyone.",
+  },
+  {
+    image: "/video-clips/WhatsApp Image 2025-09-07 at 22.05.47_7db2f64f.jpg",
+    // title: "Lead with Vision",
+    // subtitle: "Together, we can build a better society with policies that serve everyone.",
   },
 ];
 
@@ -59,10 +64,10 @@ export default function CustomCarousel() {
         ))}
       </div>
       <div className="absolute inset-x-0 bottom-0 top-0 flex flex-col items-center justify-end p-6 text-white">
-        <h2 className="text-3xl font-bold mb-2">
+        {/* <h2 className="text-3xl font-bold mb-2">
           {carouselItems[currentSlide].title}
-        </h2>
-        <p className="text-xl mb-8">{carouselItems[currentSlide].subtitle}</p>
+        </h2> */}
+        {/* <p className="text-xl mb-8">{carouselItems[currentSlide].subtitle}</p> */}
         <div className="flex space-x-2 mb-4">
           {carouselItems.map((_, index) => (
             <button
