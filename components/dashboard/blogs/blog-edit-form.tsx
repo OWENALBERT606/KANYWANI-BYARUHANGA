@@ -20,10 +20,14 @@ import toast from "react-hot-toast";
 import TextArea from "@/components/FormInputs/TextAreaInput";
 import { updateBlogContent, updateMetaData } from "@/actions/blogs";
 import { Loader2 } from "lucide-react";
+import PdfInput from "@/components/FormInputs/PdfInput";
+import VideoInput from "@/components/FormInputs/VideoInput";
 export type MetaPros = {
   description: string;
   title: string;
   thumbnail: string;
+  pdfUrl?: any;
+  videoUrl?:any;
 };
 export default function BlogEditForm({
   initialData,
@@ -35,6 +39,8 @@ export default function BlogEditForm({
   const initialContent =
     initialData?.content ?? "<p>Write your article here</p>";
   const [content, setContent] = useState(initialContent);
+  const [documents, setDocuments] = useState<any>(initialData?.pdfUrl || []);
+  const [video, setVideo] = useState<any>(initialData?.videoUrl || []);
   const {
     register,
     handleSubmit,
@@ -54,6 +60,9 @@ export default function BlogEditForm({
     setLoading(true);
     try {
       data.thumbnail = imageUrl;
+      data.pdfUrl = documents;
+      data.videoUrl = video;
+      if (editingId) await updateMetaData(editingId, data);
       await updateMetaData(editingId, data);
       setLoading(false);
       toast.success("Updated Successfully!");
@@ -146,6 +155,12 @@ export default function BlogEditForm({
                     </div>
                   </CardContent>
                 </Card>
+                       <VideoInput
+                        title="Attach blog video"
+                        videoUrl={video}
+                        setVideoUrl={setVideo}
+                        endpoint="blogVideoUploader" // 👈 this should match your Uploadthing endpoint
+                      />
               </div>
               <div className="lg:col-span-4 col-span-full ">
                 <div className="grid auto-rows-max items-start gap-4 ">
@@ -155,6 +170,12 @@ export default function BlogEditForm({
                     setImageUrl={setImageUrl}
                     endpoint="blogImage"
                   />
+                              <PdfInput
+        title="Attach blog document"
+        pdfUrl={documents}
+        setPdfUrl={setDocuments}
+        endpoint="pdfUrl" // UploadThing server endpoint
+      />
                 </div>
               </div>
             </div>

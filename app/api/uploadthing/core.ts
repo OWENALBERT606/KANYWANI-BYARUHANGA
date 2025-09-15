@@ -9,37 +9,49 @@ export const ourFileRouter = {
   categoryImage: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
     }
   ),
   blogImage: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
+    }
+  ),
+  pdfUrl: f({ pdf: { maxFileSize: "8MB" } }).onUploadComplete(
+    async ({ metadata, file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "ADMIN" };
     }
   ),
   nosigakiThumbnail: f({ image: { maxFileSize: "2MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
     }
   ),
   mpomurroThumbnail: f({ image: { maxFileSize: "2MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
     }
   ),
   videoUploader: f({ video: { maxFileSize: "16GB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
+    }
+  ),
+  blogVideoUploader: f({ video: { maxFileSize: "16GB" } }).onUploadComplete(
+    async ({ metadata, file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "ADMIN" };
     }
   ),
   mpomurroVideo: f({ video: { maxFileSize: "16GB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "ADMIN" };
     }
   ),
   fileUploads: f({
@@ -65,7 +77,7 @@ export const ourFileRouter = {
     "application/zip": { maxFileSize: "1MB", maxFileCount: 4 },
   }).onUploadComplete(async ({ metadata, file }) => {
     console.log("file url", file.url);
-    return { uploadedBy: "JB" };
+    return { uploadedBy: "ADMIN" };
   }),
   mailAttachments: f({
     image: { maxFileSize: "1MB", maxFileCount: 4 },
@@ -90,7 +102,7 @@ export const ourFileRouter = {
     "application/zip": { maxFileSize: "1MB", maxFileCount: 4 },
   }).onUploadComplete(async ({ metadata, file }) => {
     console.log("file url", file.url);
-    return { uploadedBy: "JB" };
+    return { uploadedBy: "ADMIN" };
   }),
 } satisfies FileRouter;
 

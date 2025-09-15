@@ -257,6 +257,8 @@ export async function updateMetaData(id: string, data: MetaPros) {
         thumbnail: data.thumbnail,
         description: data.description,
         title: data.title,
+        pdfUrl: data.pdfUrl,
+        videoUrl: data.videoUrl,
       },
     });
     revalidatePath("/dashboard/blogs");

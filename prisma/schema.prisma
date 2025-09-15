@@ -96,6 +96,8 @@ model Blog {
   authorId      String
   authorName    String
   authorImage   String?
+  pdfUrl     String?
+  videoUrl     String?
   authorTitle   String?
   category      BlogCategory @relation(fields: [categoryId], references: [id])
   categoryId    String
