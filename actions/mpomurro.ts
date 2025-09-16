@@ -40,7 +40,7 @@ export async function createMpomurro(data: MpomurroProps) {
 export async function getMpomurros() {
   try {
     const mpomurros = await db.mpomurro.findMany({
-      orderBy: { createdAt: "desc" },
+      orderBy: { createdAt: "asc" },
     });
     return mpomurros;
   } catch (error) {
