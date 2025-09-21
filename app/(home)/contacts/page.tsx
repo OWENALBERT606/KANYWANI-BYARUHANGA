@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Calendar, Users } from "lucide-react"
+import ContactPage from "@/components/contact-form"
 
 export default function Page() {
   return (
@@ -81,59 +82,9 @@ export default function Page() {
       {/* Contact Form & Community Engagement */}
       <section className="py-20 bg-popover">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-1 gap-12">
             {/* Contact Form */}
-            <Card className="border-border">
-              <CardHeader>
-                <CardTitle className="text-2xl text-card-foreground flex items-center gap-2">
-                  <MessageSquare className="h-6 w-6 text-primary" />
-                  Send a Message
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName" className="text-foreground">
-                      First Name
-                    </Label>
-                    <Input id="firstName" placeholder="Your first name" className="border-border" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName" className="text-foreground">
-                      Last Name
-                    </Label>
-                    <Input id="lastName" placeholder="Your last name" className="border-border" />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-foreground">
-                    Email
-                  </Label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" className="border-border" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subject" className="text-foreground">
-                    Subject
-                  </Label>
-                  <Input id="subject" placeholder="What's this about?" className="border-border" />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message" className="text-foreground">
-                    Message
-                  </Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Share your thoughts, concerns, or ideas..."
-                    rows={6}
-                    className="border-border"
-                  />
-                </div>
-                <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                  <Send className="h-4 w-4 mr-2" />
-                  Send Message
-                </Button>
-              </CardContent>
-            </Card>
+           <ContactPage/>
 
             {/* Community Engagement Options */}
             <div className="space-y-8">
