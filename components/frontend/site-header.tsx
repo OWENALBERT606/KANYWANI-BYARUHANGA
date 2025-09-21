@@ -197,16 +197,12 @@ export default function SiteHeader({ session }: { session: Session | null }) {
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-4 border-t bg-background">
               <div className="grid gap-2">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => setOpen(false)}
-                >
-                  Log in
-                </Button>
-                <Button className="w-full bg-yellow-400" onClick={() => setOpen(false)}>
+              <Link href="/login" className="w-full px-4 py-3 flex text-center items-center justify-center bg-slate-200">
+                  Login
+                </Link>
+                <Link href="/register" className="w-full px-4 py-3 flex text-center items-center justify-center bg-yellow-400">
                   Sign up
-                </Button>
+                </Link>
               </div>
             </div>
           </SheetContent>

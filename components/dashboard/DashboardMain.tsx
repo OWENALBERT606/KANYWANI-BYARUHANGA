@@ -181,7 +181,7 @@ export default function DashboardMain() {
 
         <div className="grid grid-cols-12 gap-6">
           {/* Recent Activity Table */}
-          <Card className="col-span-8">
+          {/* <Card className="col-span-8">
             <CardHeader>
               <CardTitle>Recent Reader Activity</CardTitle>
               <CardDescription>Latest interactions with your content</CardDescription>
@@ -237,10 +237,10 @@ export default function DashboardMain() {
                 </TableBody>
               </Table>
             </CardContent>
-          </Card>
+          </Card> */}
 
           {/* Top Performing Content */}
-          <Card className="col-span-4">
+          {/* <Card className="col-span-4">
             <CardHeader>
               <CardTitle>Top Performing Content</CardTitle>
               <CardDescription>Most viewed articles and posts</CardDescription>
@@ -269,7 +269,7 @@ export default function DashboardMain() {
                 ))}
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
       </div>
     </div>
