@@ -7,15 +7,20 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { MessageSquare, Send } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export default function ContactPage() {
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState("")
+  const router=useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
     setStatus("")
+
+      const form = e.currentTarget // ✅ this is your form element
+
 
     const formData = new FormData(e.currentTarget)
     const data = {
@@ -36,7 +41,13 @@ export default function ContactPage() {
       const result = await res.json()
       if (result.success) {
         setStatus("✅ Message sent successfully!")
-        e.currentTarget.reset()
+        // e.currentTarget.reset()
+        router.refresh();
+        form.reset();
+          setTimeout(() => {
+    window.location.reload()
+  }, 2000) // 2 second delay
+     
 
       } else {
         setStatus("❌ Failed to send message. Try again.")
