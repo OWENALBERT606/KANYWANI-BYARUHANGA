@@ -28,6 +28,52 @@ export type BlogProps = {
   authorTitle: string;
   categoryTitle: string;
 };
+
+export type CreateBlogCategoryProps = {
+  name: string;
+  slug: string;
+};
+
+export async function createBlogCategory(data: CreateBlogCategoryProps) {
+  try {
+    // Check if category with the same slug or name already exists
+    const existing = await db.blogCategory.findFirst({
+      where: {
+        OR: [
+          { name: data.name },
+          { slug: data.slug }
+        ],
+      },
+    });
+
+    if (existing) {
+      return {
+        ok: false,
+        message: "Category already exists",
+        data: existing,
+      };
+    }
+
+    const newCategory = await db.blogCategory.create({
+      data,
+    });
+
+    // Revalidate dashboard categories page
+    revalidatePath("/dashboard/blogs/categories");
+
+    return {
+      ok: true,
+      data: newCategory,
+    };
+
+  } catch (error) {
+    console.log(error);
+    return {
+      ok: false,
+      message: "Failed to create blog category",
+    };
+  }
+}
  
 export async function createNewBlog(data: BlogProps) {
   console.log(data);

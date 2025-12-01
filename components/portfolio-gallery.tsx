@@ -35,7 +35,7 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
   },
   {
     id: "5",
-    src: "/political-campaign-rally-speaking-passionately.jpg",
+    src: "/portfolio/political-campaign-rally-speaking-passionately.jpg",
     alt: "Campaign speech",
   },
   

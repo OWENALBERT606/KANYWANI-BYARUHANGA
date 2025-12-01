@@ -13,8 +13,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { generateSlug } from "@/lib/generateSlug";
-import { createBlogCategory } from "@/actions/blogs";
 import { BlogCategory } from "@prisma/client";
+import { createBlogCategory } from "@/actions/blogs";
 
 export default function BlogCategoryList({
   fetchedCategories,
