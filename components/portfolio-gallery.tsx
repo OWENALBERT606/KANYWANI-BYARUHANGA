@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useState, useEffect } from "react"
 
 export interface PortfolioImage {
@@ -29,13 +30,8 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
     alt: "Community engagement",
   },
   {
-    id: "4",
-    src: "/portfolio/WhatsApp Image 2025-11-23 at 11.58.09.jpeg",
-    alt: "Charity event",
-  },
-  {
     id: "5",
-    src: "/portfolio/political-campaign-rally-speaking-passionately.jpg",
+    src: "/portfolio/WhatsApp Image 2025-11-23 at 11.58.08.jpeg",
     alt: "Campaign speech",
   },
   
@@ -57,9 +53,11 @@ export function PortfolioGallery() {
             key={image.id}
             className="overflow-hidden rounded-lg bg-muted aspect-square hover:shadow-xl transition-shadow duration-300 group cursor-pointer"
           >
-            <img
+            <Image
               src={image.src || "/placeholder.svg"}
               alt={image.alt}
+              width={100}
+              height={80}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
