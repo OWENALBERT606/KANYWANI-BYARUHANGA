@@ -28,31 +28,7 @@ export type BlogProps = {
   authorTitle: string;
   categoryTitle: string;
 };
-export async function createBlogCategory(data: BlogCategoryProps) {
-  const slug = data.slug;
-
-  if (slug) {
-    try {
-      const existingCategory = await db.blogCategory.findUnique({
-        where: {
-          slug,
-        },
-      });
-      if (existingCategory) {
-        return existingCategory;
-      }
-      const newCategory = await db.blogCategory.create({
-        data,
-      });
-
-      revalidatePath("/dashboard/blogs");
-      return newCategory;
-    } catch (error) {
-      console.log(error);
-      return null;
-    }
-  }
-}
+ 
 export async function createNewBlog(data: BlogProps) {
   console.log(data);
   const slug = data.slug;
