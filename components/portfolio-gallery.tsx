@@ -56,8 +56,8 @@ export function PortfolioGallery() {
             <Image
               src={image.src || "/placeholder.svg"}
               alt={image.alt}
-              width={100}
-              height={80}
+              width={400}
+              height={120}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             />
           </div>
