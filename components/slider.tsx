@@ -30,12 +30,12 @@ export default function CustomCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselItems.length);
+    setCurrentSlide((prev:any) => (prev + 1) % carouselItems.length);
   };
 
   const prevSlide = () => {
     setCurrentSlide(
-      (prev) => (prev - 1 + carouselItems.length) % carouselItems.length
+      (prev:any) => (prev - 1 + carouselItems.length) % carouselItems.length
     );
   };
 

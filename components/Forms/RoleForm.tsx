@@ -44,7 +44,7 @@ export default function RoleForm({ editingId, initialData }: RoleFormProps) {
         : await createRole(data);
 
       if (!result.success) {
-        toast.error(result.error);
+        // toast.error( || "Something went wrong!");
         return;
       }
 
