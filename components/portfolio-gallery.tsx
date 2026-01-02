@@ -79,6 +79,26 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
     src: "/pics/WhatsApp Image 2025-12-30 at 13.03.04.jpeg",
     alt: "Campaign speech",
   },
+  {
+    id: "15",
+    src: "/WhatsApp Unknown 2026-01-02 at 08.05.53/WhatsApp Image 2025-12-30 at 13.03.04.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "16",
+    src: "/WhatsApp Unknown 2026-01-02 at 08.05.53/WhatsApp Image 2025-12-30 at 13.03.05 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "17",
+    src: "/WhatsApp Unknown 2026-01-02 at 08.05.53/WhatsApp Image 2025-12-30 at 13.03.05.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "18",
+    src: "/WhatsApp Unknown 2026-01-02 at 08.05.53/WhatsApp Image 2025-12-30 at 13.03.06.jpeg",
+    alt: "Campaign speech",
+  },
   
 ]
 
