@@ -217,6 +217,121 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
     src: "/pics/WhatsApp Image 2025-12-30 at 13.03.04.jpeg",
     alt: "Campaign speech",
   },
+  {
+    id: "15",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.16.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "16",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.17 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "17",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.17 (2).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "18",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.18 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "19",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.18.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "20",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.19 (2).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "21",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.19.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "22",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.21 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "23",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.21 (2).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "24",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.21.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "25",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.22 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "26",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.22.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "27",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.23 (2).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "28",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.23.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "29",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.24 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "30",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.21.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "31",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.27.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "32",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.28 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "33",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.28.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "34",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.29 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "35",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.30.jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "36",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.31 (1).jpeg",
+    alt: "Campaign speech",
+  },
+  {
+    id: "37",
+    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.31.jpeg",
+    alt: "Campaign speech",
+  },
 ]
 
 export function PortfolioGallery() {
