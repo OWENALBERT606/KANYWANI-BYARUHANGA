@@ -5,12 +5,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const carouselItems= [
   {
-    image: "/video-clips/hero-3.JPG",
+    image: "/john/WhatsApp Image 2026-02-20 at 06.43.57.jpeg",
     // title: "Unite for Change",
     // subtitle: "Join the movement and make your voice heard in shaping our shared future.",
   },
   {
-    image: "/video-clips/hero-2.JPG",
+    image: "/john/WhatsApp Image 2026-02-20 at 06.47.23.jpeg",
     // title: "Empower Your Vote",
     // subtitle: "Your ballot is your power. Educate yourself and choose the leaders who represent you.",
   },

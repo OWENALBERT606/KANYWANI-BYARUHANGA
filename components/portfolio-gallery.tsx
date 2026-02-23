@@ -212,16 +212,16 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
     src: "/pics/WhatsApp Image 2025-12-30 at 06.55.28.jpeg",
     alt: "Campaign speech",
   },
-  {
-    id: "14",
-    src: "/pics/WhatsApp Image 2025-12-30 at 13.03.04.jpeg",
-    alt: "Campaign speech",
-  },
-  {
-    id: "15",
-    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.16.jpeg",
-    alt: "Campaign speech",
-  },
+  // {
+  //   id: "14",
+  //   src: "/pics/WhatsApp Image 2025-12-30 at 13.03.04.jpeg",
+  //   alt: "Campaign speech",
+  // },
+  // {
+  //   id: "15",
+  //   src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.16.jpeg",
+  //   alt: "Campaign speech",
+  // },
   {
     id: "16",
     src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.17 (1).jpeg",
@@ -232,11 +232,11 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
     src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.17 (2).jpeg",
     alt: "Campaign speech",
   },
-  {
-    id: "18",
-    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.18 (1).jpeg",
-    alt: "Campaign speech",
-  },
+  // {
+  //   id: "18",
+  //   src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.18 (1).jpeg",
+  //   alt: "Campaign speech",
+  // },
   {
     id: "19",
     src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.18.jpeg",
@@ -247,16 +247,16 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
     src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.19 (2).jpeg",
     alt: "Campaign speech",
   },
-  {
-    id: "21",
-    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.19.jpeg",
-    alt: "Campaign speech",
-  },
-  {
-    id: "22",
-    src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.21 (1).jpeg",
-    alt: "Campaign speech",
-  },
+  // {
+  //   id: "21",
+  //   src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.19.jpeg",
+  //   alt: "Campaign speech",
+  // },
+  // {
+  //   id: "22",
+  //   src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.21 (1).jpeg",
+  //   alt: "Campaign speech",
+  // },
   {
     id: "23",
     src: "/campaign/WhatsApp Image 2026-01-29 at 13.02.21 (2).jpeg",
