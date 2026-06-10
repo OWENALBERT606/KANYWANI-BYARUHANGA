@@ -2,7 +2,6 @@
 
 import React from 'react'
 import CustomCarousel from '@/components/slider'
-import { PortfolioGallery } from '@/components/portfolio-gallery'
 import { getVisitCount, registerVisit } from '@/actions/visitor-count'
 
 export default async function Page() {
@@ -33,7 +32,6 @@ export default async function Page() {
       </div>
 
       <CustomCarousel />
-      <PortfolioGallery />
     </div>
   )
 }

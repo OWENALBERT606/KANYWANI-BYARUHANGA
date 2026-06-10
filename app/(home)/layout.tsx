@@ -1,5 +1,3 @@
-import { FooterSection } from "@/components/footer-section";
-import PromoBanner from "@/components/frontend/PromoBanner";
 import Footer from "@/components/frontend/site-footer";
 import SiteHeader from "@/components/frontend/site-header";
 import { authOptions } from "@/config/auth";
@@ -12,11 +10,10 @@ export default async function HomeLayout({
 }) {
   const session = await getServerSession(authOptions);
   return (
-    <div className="bg-white">
-      {/* <PromoBanner /> */}
+    <div className="bg-background min-h-screen flex flex-col">
       <SiteHeader session={session}/>
-      {children}
-      {/* <FooterSection /> */}
+      <main className="flex-1">{children}</main>
+      <Footer />
     </div>
   );
 }
