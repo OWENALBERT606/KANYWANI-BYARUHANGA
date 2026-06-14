@@ -57,7 +57,7 @@ export default function CustomCarousel() {
             <img
               src={item.image}
               alt={`Slide ${index + 1}`}
-              className="object-contain md:object-cover w-full h-full"
+              className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
           </div>

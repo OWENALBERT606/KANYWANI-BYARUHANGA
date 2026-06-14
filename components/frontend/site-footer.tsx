@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="space-y-4">
             <Logo variant="dark" />
             <p className="text-sm text-gray-400 leading-relaxed max-w-xs">
-              Kanywani Byaruhanga — Parliamentary Candidate for Hoima City West, 2026 General Elections. Building a better future together.
+              "Constructive Social Mobilization for posterity beyond politics"
             </p>
           </div>
 
@@ -42,7 +42,6 @@ const Footer = () => {
             <h3 className="text-xs font-semibold tracking-widest uppercase text-yellow-400 mb-4">Contact</h3>
             <ul className="space-y-2.5 text-sm text-gray-400">
               <li>Hoima City West Constituency</li>
-              <li>Hoima City, Uganda</li>
               <li>
                 <Link href="/contacts" className="hover:text-yellow-400 transition-colors">
                   Get in touch →
