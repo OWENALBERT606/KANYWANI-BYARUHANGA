@@ -25,11 +25,6 @@ const PORTFOLIO_IMAGES: PortfolioImage[] = [
     contain: true,
   },
   {
-    id: "2",
-    src: "/portfolio/WhatsApp Image 2025-11-23 at 11.58.08 (2).jpeg",
-    alt: "Speaking engagement",
-  },
-  {
     id: "3",
     src: "/pics/WhatsApp Image 2025-12-30 at 06.55.18 (1).jpeg",
     alt: "Community engagement",
